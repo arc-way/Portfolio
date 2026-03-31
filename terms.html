@@ -59,11 +59,22 @@
       };
     </script>
     <style>
+      html {
+        height: 100%;
+      }
+
       body {
         background-color: #121315;
         color: #e3e2e3;
         font-family: "Inter", sans-serif;
         overflow-x: hidden;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+
+      main {
+        flex: 1;
       }
 
       .shell {
@@ -235,6 +246,24 @@
       html.light .border-outline-variant\/15 {
         border-color: rgba(75, 85, 99, 0.22) !important;
       }
+
+      html.light footer {
+        background-color: #ffffff !important;
+      }
+
+      html.light footer .text-neutral-500,
+      html.light footer .text-neutral-100,
+      html.light footer .text-neutral-200 {
+        color: #4b5563 !important;
+      }
+
+      html.light footer .text-neutral-100 {
+        color: #111827 !important;
+      }
+
+      html.light footer .border-neutral-800\/20 {
+        border-color: rgba(75, 85, 99, 0.15) !important;
+      }
     </style>
   </head>
   <body class="selection:bg-primary selection:text-on-primary" id="top">
@@ -278,8 +307,8 @@
         <div class="flex items-center gap-2 sm:gap-3">
           <a
             class="hidden md:inline-flex bg-primary-container text-on-primary px-4 py-2 text-xs font-bold rounded-sm hover:scale-[1.02] transition-transform duration-300 ease-out"
-            href="index.html#contact"
-            >Work With Us</a
+            href="index.html"
+            >Back to Home</a
           >
           <button
             aria-label="Switch theme"
@@ -299,7 +328,10 @@
             id="mobileMenuButton"
             type="button"
           >
-            <span class="material-symbols-outlined transition-transform duration-300">menu</span>
+            <span
+              class="material-symbols-outlined transition-transform duration-300"
+              >menu</span
+            >
           </button>
         </div>
       </div>
@@ -337,7 +369,7 @@
       </div>
     </nav>
 
-    <main class="grid-trace pt-24 md:pt-28" data-scroll-container id="main-content">
+    <main class="grid-trace pt-24 md:pt-28" id="main-content">
       <section class="px-6 py-16 md:py-24 hero-glow reveal">
         <div class="max-w-5xl mx-auto">
           <span class="mono-label text-primary mb-4 block">Legal</span>
@@ -467,12 +499,12 @@
         <div class="flex items-center justify-center gap-8">
           <a
             class="text-neutral-500 hover:text-neutral-200 text-[10px] font-mono uppercase tracking-widest transition-colors"
-            href="#"
+            href="https://www.linkedin.com/in/arcway"
             >LinkedIn</a
           >
           <a
             class="text-neutral-500 hover:text-neutral-200 text-[10px] font-mono uppercase tracking-widest transition-colors"
-            href="#"
+            href="https://github.com/arc-way"
             >GitHub</a
           >
           <a
@@ -489,10 +521,7 @@
       </div>
     </footer>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.3/dist/locomotive-scroll.min.js"></script>
-    <script src="script.js"></script>
+    <script src="terms-script.js"></script>
     <script src="terms-animations.js"></script>
   </body>
 </html>

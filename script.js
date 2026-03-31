@@ -125,6 +125,7 @@
 
     function setMenuState(isOpen) {
       mobileMenu.classList.toggle("hidden", !isOpen);
+      document.body.style.overflow = isOpen ? "hidden" : "auto";
       menuButton.setAttribute("aria-expanded", String(isOpen));
       if (icon) {
         icon.textContent = isOpen ? "close" : "menu";

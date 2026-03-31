@@ -271,6 +271,13 @@
         color: #374151 !important;
       }
 
+      html.light .text-primary,
+      html.light .hover\:text-primary:hover,
+      html.light .text-primary\/90,
+      html.light .text-amber-500 {
+        color: #825500 !important;
+      }
+
       html.light .border-outline-variant\/20,
       html.light .border-outline-variant\/30,
       html.light .border-outline-variant\/40,
@@ -282,6 +289,12 @@
         border-color: rgba(75, 85, 99, 0.28) !important;
         color: #111827 !important;
         background-color: #ffffff !important;
+      }
+
+      html.light .stack-chip {
+        background: rgba(243, 244, 246, 0.8);
+        border-color: rgba(75, 85, 99, 0.28);
+        color: #374151;
       }
     </style>
   </head>
@@ -318,6 +331,11 @@
               href="#technology-spine"
               >Tech Spine</a
             >
+            <a
+              class="text-neutral-400 hover:text-neutral-100 transition-colors text-sm font-medium"
+              href="terms.html"
+              >Terms & Conditions</a
+            >
           </div>
         </div>
         <div class="flex items-center gap-2 sm:gap-3">
@@ -344,7 +362,7 @@
             id="mobileMenuButtonProjects"
             type="button"
           >
-            <span class="material-symbols-outlined">menu</span>
+            <span class="material-symbols-outlined transition-transform duration-300">menu</span>
           </button>
         </div>
       </div>
@@ -367,6 +385,11 @@
             class="text-neutral-300 hover:text-neutral-100 transition-colors text-sm font-medium"
             href="#technology-spine"
             >Tech Spine</a
+          >
+          <a
+            class="text-neutral-300 hover:text-neutral-100 transition-colors text-sm font-medium"
+            href="terms.html"
+            >Terms & Conditions</a
           >
           <a
             class="bg-primary-container text-on-primary px-4 py-2 text-xs font-bold rounded-sm w-fit"
@@ -620,21 +643,44 @@
                   </p>
                 </div>
               </div>
-              <aside
-                class="lg:col-span-4 bg-surface-container-high p-6 border border-outline-variant/20 tilt-card"
-              >
-                <p class="mono-label text-primary text-[10px] mb-4">
-                  Architecture
-                </p>
-                <ul
-                  class="text-on-surface-variant leading-relaxed space-y-2 text-sm"
+              <aside class="lg:col-span-4 grid grid-cols-1 gap-4">
+                <div
+                  class="bg-surface-container-high p-5 border border-outline-variant/20"
                 >
-                  <li>MERN stack foundation</li>
-                  <li>JWT + RBAC protection</li>
-                  <li>Razorpay membership transactions</li>
-                  <li>Socket.IO admin analytics</li>
-                  <li>Cloudflare + Hostinger deployment</li>
-                </ul>
+                  <p class="mono-label text-primary text-[10px] mb-3">
+                    Architecture
+                  </p>
+                  <ul
+                    class="text-on-surface-variant leading-relaxed space-y-2 text-sm"
+                  >
+                    <li>MERN stack foundation</li>
+                    <li>JWT + RBAC protection</li>
+                    <li>Razorpay membership transactions</li>
+                    <li>Socket.IO admin analytics</li>
+                    <li>Cloudflare + Hostinger deployment</li>
+                  </ul>
+                </div>
+                <div
+                  class="bg-surface-container-high p-5 border border-primary/20"
+                >
+                  <p class="mono-label text-primary text-[10px] mb-3">
+                    Platform Link
+                  </p>
+                  <p
+                    class="text-sm text-on-surface-variant leading-relaxed mb-4"
+                  >
+                    Live CREA unified member platform with secure access portals
+                    for members, events, forums, circulars, and administrative
+                    workflows.
+                  </p>
+                  <a
+                    class="text-primary underline underline-offset-4 text-xs"
+                    href="https://crea.org.in"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >https://crea.org.in</a
+                  >
+                </div>
               </aside>
             </div>
           </article>
@@ -1083,20 +1129,27 @@
         <div class="text-neutral-100 font-bold text-center md:text-left">
           Arcway
         </div>
-        <p
-          class="text-[10px] font-mono uppercase tracking-widest text-neutral-500 text-center"
-        >
-          © 2026 Arcway Portfolio. All rights reserved.
-        </p>
+        <div class="flex flex-col sm:flex-row items-center gap-2 sm:gap-4">
+          <p
+            class="text-[10px] font-mono uppercase tracking-widest text-neutral-500 text-center"
+          >
+            © 2026 Arcway Portfolio. All rights reserved.
+          </p>
+          <a
+            class="text-[10px] font-mono uppercase tracking-widest text-neutral-500 hover:text-neutral-200 transition-colors"
+            href="terms.html"
+            >Terms &amp; Conditions</a
+          >
+        </div>
         <div class="flex items-center justify-center gap-8">
           <a
             class="text-neutral-500 hover:text-neutral-200 text-[10px] font-mono uppercase tracking-widest transition-colors"
-            href="#"
+            href="https://www.linkedin.com/in/arcway"
             >LinkedIn</a
           >
           <a
             class="text-neutral-500 hover:text-neutral-200 text-[10px] font-mono uppercase tracking-widest transition-colors"
-            href="#"
+            href="https://github.com/arc-way"
             >GitHub</a
           >
           <a

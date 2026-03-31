@@ -294,6 +294,13 @@
         color: #111827 !important;
       }
 
+      html.light .text-primary,
+      html.light .hover\:text-primary:hover,
+      html.light .text-primary\/90,
+      html.light .text-amber-500 {
+        color: #825500 !important;
+      }
+
       html.light .border-outline-variant\/20,
       html.light .border-outline-variant\/30,
       html.light .border-outline-variant\/40,
@@ -358,6 +365,11 @@
               href="project-detail.html"
               >Projects</a
             >
+            <a
+              class="text-neutral-400 hover:text-neutral-100 transition-colors text-sm font-medium"
+              href="terms.html"
+              >Terms & Conditions</a
+            >
           </div>
         </div>
         <div class="flex items-center gap-2 sm:gap-3">
@@ -384,7 +396,7 @@
             id="mobileMenuButton"
             type="button"
           >
-            <span class="material-symbols-outlined">menu</span>
+            <span class="material-symbols-outlined transition-transform duration-300">menu</span>
           </button>
         </div>
       </div>
@@ -407,6 +419,11 @@
             class="text-neutral-300 hover:text-neutral-100 transition-colors text-sm font-medium"
             href="project-detail.html"
             >Projects</a
+          >
+          <a
+            class="text-neutral-300 hover:text-neutral-100 transition-colors text-sm font-medium"
+            href="terms.html"
+            >Terms & Conditions</a
           >
           <a
             class="bg-primary-container text-on-primary px-4 py-2 text-xs font-bold rounded-sm w-fit"
@@ -484,15 +501,10 @@
                 depth.
               </h2>
               <div class="space-y-6 text-neutral-400 text-lg">
+                <p>We don't just deliver projects, we invest in them.</p>
                 <p>
-                  Arcway works with institutions, operational teams, and
-                  startups to transform fragmented workflows into modern digital
-                  experiences.
-                </p>
-                <p>
-                  Our portfolio spans association platforms, institutional
-                  websites, and real-time operations systems built for speed,
-                  reliability, and long-term maintainability.
+                  When you win, we win. That's the kind of partnership we
+                  believe in.
                 </p>
               </div>
             </div>
@@ -570,8 +582,8 @@
               >
               <h3 class="text-xl font-bold mb-4">Web Platforms</h3>
               <p class="text-neutral-500 text-sm leading-relaxed mb-6">
-                High-performance websites and web apps built for conversion,
-                discoverability, and smooth operations.
+                High-performance websites, High Quality in Work and web apps
+                built for conversion, discoverability, and smooth operations.
               </p>
               <div
                 class="w-8 h-[2px] bg-outline-variant group-hover:bg-primary transition-colors"
@@ -711,6 +723,56 @@
                   href="project-detail.html#locoinfo"
                   >Preview Project</a
                 >
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Letters of Recommendation Section -->
+      <section
+        class="py-32 px-6 bg-surface-container-lowest"
+        id="recommendations"
+      >
+        <div class="max-w-7xl mx-auto">
+          <div class="mb-20">
+            <span class="mono-label text-primary mb-4 block">Social Proof</span>
+            <h2 class="text-5xl font-bold tight-heading mb-4">
+              Letters of Recommendation
+            </h2>
+            <p class="text-xl text-neutral-400 max-w-2xl">
+              Trusted by the people we've worked with.
+            </p>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- LoR Card - CREA -->
+            <div
+              class="group relative overflow-hidden bg-surface-container rounded-sm border border-outline-variant/15 p-8 hover:border-primary/40 transition-colors"
+            >
+              <div class="h-full flex flex-col justify-between">
+                <div>
+                  <div class="mb-6 pb-6 border-b border-outline-variant/20">
+                    <h3 class="text-lg font-bold mb-1">Mr. Sunil Phirke</h3>
+                    <p class="text-sm text-neutral-500 mono-label">
+                      General Secretary, CREA
+                    </p>
+                  </div>
+                  <p class="text-neutral-400 text-sm leading-relaxed mb-6">
+                    "Arcway transformed how our association operates. The
+                    platform brought transparency and efficiency to our
+                    membership and communication workflows."
+                  </p>
+                </div>
+                <a
+                  class="inline-flex items-center gap-2 text-primary text-sm font-bold mono-label hover:gap-3 transition-all"
+                  href="https://drive.google.com/file/d/1It71tRXYRtsWnr7DKkW5_jd22oxflPyH/view?usp=sharing"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <span>View LoR</span>
+                  <span class="material-symbols-outlined text-base">
+                    north_east
+                  </span>
+                </a>
               </div>
             </div>
           </div>
@@ -1095,6 +1157,133 @@
           </div>
         </div>
       </section>
+      <!-- Why Choose Arcway Section -->
+      <section class="py-32 px-6 bg-surface-container-low" id="why-arcway">
+        <div class="max-w-7xl mx-auto">
+          <div class="mb-20">
+            <span class="mono-label text-primary mb-4 block"
+              >Our Difference</span
+            >
+            <h2 class="text-5xl font-bold tight-heading mb-6">
+              Why Choose Arcway?
+            </h2>
+            <p class="text-xl text-neutral-400 max-w-2xl">
+              We're not just a vendor. We're your product partner.
+            </p>
+          </div>
+          <div
+            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0 border border-outline-variant/10"
+          >
+            <!-- Reason 1: Outcome-Focused -->
+            <div
+              class="p-10 bg-surface group hover:bg-surface-container-high transition-all duration-500 border-r border-b border-outline-variant/10"
+            >
+              <span
+                class="material-symbols-outlined text-primary text-4xl mb-6 group-hover:scale-110 transition-transform block"
+                >trending_up</span
+              >
+              <h3 class="text-xl font-bold mb-4">Outcome-Focused</h3>
+              <p class="text-neutral-500 text-sm leading-relaxed mb-6">
+                We measure success by your results, not just deliverables. Your
+                wins are our wins.
+              </p>
+              <div
+                class="w-8 h-[2px] bg-outline-variant group-hover:bg-primary transition-colors"
+              ></div>
+            </div>
+
+            <!-- Reason 2: True Partnership -->
+            <div
+              class="p-10 bg-surface group hover:bg-surface-container-high transition-all duration-500 border-r border-b border-outline-variant/10"
+            >
+              <span
+                class="material-symbols-outlined text-primary text-4xl mb-6 group-hover:scale-110 transition-transform block"
+                >handshake</span
+              >
+              <h3 class="text-xl font-bold mb-4">True Partnership</h3>
+              <p class="text-neutral-500 text-sm leading-relaxed mb-6">
+                We invest in your product like it's our own. Long-term value
+                matters more than quick wins.
+              </p>
+              <div
+                class="w-8 h-[2px] bg-outline-variant group-hover:bg-primary transition-colors"
+              ></div>
+            </div>
+
+            <!-- Reason 3: Clean Architecture -->
+            <div
+              class="p-10 bg-surface group hover:bg-surface-container-high transition-all duration-500 border-r border-b border-outline-variant/10"
+            >
+              <span
+                class="material-symbols-outlined text-primary text-4xl mb-6 group-hover:scale-110 transition-transform block"
+                >architecture</span
+              >
+              <h3 class="text-xl font-bold mb-4">Clean Architecture</h3>
+              <p class="text-neutral-500 text-sm leading-relaxed mb-6">
+                Maintainable, scalable code that grows with you. Built for
+                future teams and change.
+              </p>
+              <div
+                class="w-8 h-[2px] bg-outline-variant group-hover:bg-primary transition-colors"
+              ></div>
+            </div>
+
+            <!-- Reason 4: Fast Turnaround -->
+            <div
+              class="p-10 bg-surface group hover:bg-surface-container-high transition-all duration-500 border-r border-b border-outline-variant/10"
+            >
+              <span
+                class="material-symbols-outlined text-primary text-4xl mb-6 group-hover:scale-110 transition-transform block"
+                >flash_on</span
+              >
+              <h3 class="text-xl font-bold mb-4">Fast Turnaround</h3>
+              <p class="text-neutral-500 text-sm leading-relaxed mb-6">
+                Structured delivery without cutting corners. Speed meets quality
+                through clear processes.
+              </p>
+              <div
+                class="w-8 h-[2px] bg-outline-variant group-hover:bg-primary transition-colors"
+              ></div>
+            </div>
+
+            <!-- Reason 5: Research Before Code -->
+            <div
+              class="p-10 bg-surface group hover:bg-surface-container-high transition-all duration-500 border-r border-b border-outline-variant/10"
+            >
+              <span
+                class="material-symbols-outlined text-primary text-4xl mb-6 group-hover:scale-110 transition-transform block"
+                >search</span
+              >
+              <h3 class="text-xl font-bold mb-4">Research Before Code</h3>
+              <p class="text-neutral-500 text-sm leading-relaxed mb-6">
+                Every decision is backed by discovery and user understanding. No
+                shortcuts, no guessing.
+              </p>
+              <div
+                class="w-8 h-[2px] bg-outline-variant group-hover:bg-primary transition-colors"
+              ></div>
+            </div>
+
+            <!-- Reason 6: Remote-Ready -->
+            <div
+              class="p-10 bg-surface group hover:bg-surface-container-high transition-all duration-500 border-b border-outline-variant/10"
+            >
+              <span
+                class="material-symbols-outlined text-primary text-4xl mb-6 group-hover:scale-110 transition-transform block"
+                >public</span
+              >
+              <h3 class="text-xl font-bold mb-4">Remote-Ready</h3>
+              <p class="text-neutral-500 text-sm leading-relaxed mb-6">
+                Smooth async collaboration for teams anywhere in India and
+                beyond. Timezone friendly.
+              </p>
+              <div
+                class="w-8 h-[2px] bg-outline-variant group-hover:bg-primary transition-colors"
+              ></div>
+            </div>
+          </div>
+        </div>
+      </section>
       <!-- Contact Section -->
       <section
         class="py-32 px-6 border-t border-outline-variant/10"
@@ -1130,17 +1319,12 @@
               <div class="mt-16 flex gap-8">
                 <a
                   class="mono-label text-xs hover:text-primary transition-colors"
-                  href="#"
+                  href="https://www.linkedin.com/in/arcway"
                   >LinkedIn</a
                 >
                 <a
                   class="mono-label text-xs hover:text-primary transition-colors"
-                  href="#"
-                  >X</a
-                >
-                <a
-                  class="mono-label text-xs hover:text-primary transition-colors"
-                  href="#"
+                  href="https://github.com/arc-way"
                   >GitHub</a
                 >
               </div>
@@ -1227,20 +1411,27 @@
           <div class="text-neutral-100 font-bold text-center md:text-left">
             Arcway
           </div>
-          <p
-            class="text-[10px] font-mono uppercase tracking-widest text-neutral-500 text-center"
-          >
-            © 2026 Arcway Portfolio. All rights reserved.
-          </p>
+          <div class="flex flex-col sm:flex-row items-center gap-2 sm:gap-4">
+            <p
+              class="text-[10px] font-mono uppercase tracking-widest text-neutral-500 text-center"
+            >
+              © 2026 Arcway Portfolio. All rights reserved.
+            </p>
+            <a
+              class="text-[10px] font-mono uppercase tracking-widest text-neutral-500 hover:text-neutral-200 transition-colors"
+              href="terms.html"
+              >Terms &amp; Conditions</a
+            >
+          </div>
           <div class="flex items-center justify-center gap-8">
             <a
               class="text-neutral-500 hover:text-neutral-200 text-[10px] font-mono uppercase tracking-widest transition-colors"
-              href="#"
+              href="https://www.linkedin.com/in/arcway"
               >LinkedIn</a
             >
             <a
               class="text-neutral-500 hover:text-neutral-200 text-[10px] font-mono uppercase tracking-widest transition-colors"
-              href="#"
+              href="https://github.com/arc-way"
               >GitHub</a
             >
             <a

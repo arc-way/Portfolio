@@ -1,0 +1,498 @@
+<!doctype html>
+
+<html class="dark" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Terms &amp; Conditions | Arcway Portfolio</title>
+    <script>
+      (function () {
+        try {
+          var storedTheme = localStorage.getItem("arcway-theme");
+          var prefersDark = window.matchMedia(
+            "(prefers-color-scheme: dark)",
+          ).matches;
+          var useDark = storedTheme ? storedTheme === "dark" : prefersDark;
+
+          document.documentElement.classList.toggle("dark", useDark);
+          document.documentElement.classList.toggle("light", !useDark);
+        } catch (error) {
+          document.documentElement.classList.add("dark");
+        }
+      })();
+    </script>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&amp;family=Space+Grotesk:wght@300;500;700&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              surface: "#121315",
+              primary: "#ffd092",
+              "on-surface": "#e3e2e3",
+              "surface-container-highest": "#343536",
+              "surface-container-high": "#292a2b",
+              "surface-container": "#1f2021",
+              "surface-container-low": "#1b1c1d",
+              "surface-container-lowest": "#0d0e0f",
+              "primary-container": "#ffab00",
+              "on-primary": "#452b00",
+              outline: "#a08e79",
+              "outline-variant": "#524433",
+            },
+            fontFamily: {
+              headline: ["Inter"],
+              body: ["Inter"],
+              label: ["Space Grotesk"],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      body {
+        background-color: #121315;
+        color: #e3e2e3;
+        font-family: "Inter", sans-serif;
+        overflow-x: hidden;
+      }
+
+      .shell {
+        width: min(1280px, 92%);
+        margin: 0 auto;
+      }
+
+      .full-width {
+        width: 100%;
+      }
+
+      .grain-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 9999;
+        opacity: 0.02;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+      }
+
+      .grid-trace {
+        background-image:
+          linear-gradient(
+            to right,
+            rgba(82, 68, 51, 0.05) 1px,
+            transparent 1px
+          ),
+          linear-gradient(
+            to bottom,
+            rgba(82, 68, 51, 0.05) 1px,
+            transparent 1px
+          );
+        background-size: 2.75rem 2.75rem;
+      }
+
+      .hero-glow {
+        background: radial-gradient(
+          circle at 50% 50%,
+          rgba(255, 208, 146, 0.05) 0%,
+          rgba(18, 19, 21, 1) 70%
+        );
+      }
+
+      .mono-label {
+        font-family: "Space Grotesk", monospace;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+
+      .tight-heading {
+        letter-spacing: -0.04em;
+      }
+
+      .material-symbols-outlined {
+        font-variation-settings:
+          "FILL" 0,
+          "wght" 400,
+          "GRAD" 0,
+          "opsz" 24;
+      }
+
+      html.light body {
+        background-color: #f3f4f6;
+        color: #111827;
+      }
+
+      html.light .site-nav,
+      html.light .site-mobile-menu {
+        background: rgba(243, 244, 246, 0.92) !important;
+        border-color: rgba(55, 65, 81, 0.18) !important;
+      }
+
+      html.light .grid-trace {
+        background-image:
+          linear-gradient(
+            to right,
+            rgba(55, 65, 81, 0.07) 1px,
+            transparent 1px
+          ),
+          linear-gradient(
+            to bottom,
+            rgba(55, 65, 81, 0.07) 1px,
+            transparent 1px
+          );
+      }
+
+      html.light .hero-glow {
+        background: radial-gradient(
+          circle at 50% 50%,
+          rgba(255, 171, 0, 0.11) 0%,
+          rgba(243, 244, 246, 1) 70%
+        );
+      }
+
+      html.light .bg-surface,
+      html.light .bg-surface-container,
+      html.light .bg-surface-container-low,
+      html.light .bg-surface-container-lowest,
+      html.light .bg-surface-container-high,
+      html.light .bg-surface-container-highest {
+        background-color: #ffffff !important;
+      }
+
+      html.light .text-on-surface {
+        color: #111827 !important;
+      }
+
+      html.light .text-on-surface-variant,
+      html.light .text-neutral-500 {
+        color: #4b5563 !important;
+      }
+
+      html.light .text-neutral-400,
+      html.light .text-neutral-300 {
+        color: #374151 !important;
+      }
+
+      html.light .text-neutral-100,
+      html.light .dark\:text-neutral-50 {
+        color: #111827 !important;
+      }
+
+      html.light .text-primary,
+      html.light .hover\:text-primary:hover,
+      html.light .text-primary\/90,
+      html.light .text-amber-500 {
+        color: #825500 !important;
+      }
+
+      html.light .border-outline-variant\/20,
+      html.light .border-outline-variant\/30,
+      html.light .border-outline-variant\/40,
+      html.light .border-outline-variant\/15,
+      html.light .border-outline-variant\/10,
+      html.light .border-outline-variant\/5 {
+        border-color: rgba(75, 85, 99, 0.2) !important;
+      }
+
+      html.light .theme-toggle {
+        border-color: rgba(75, 85, 99, 0.28) !important;
+        color: #111827 !important;
+        background-color: #ffffff !important;
+      }
+
+      .reveal {
+        opacity: 1 !important;
+        visibility: visible !important;
+      }
+
+      html.light .hero-glow {
+        background: radial-gradient(
+          circle at 50% 50%,
+          rgba(255, 171, 0, 0.11) 0%,
+          rgba(243, 244, 246, 1) 70%
+        );
+      }
+
+      html.light .bg-surface-container {
+        background-color: #ffffff !important;
+      }
+
+      html.light .text-on-surface-variant {
+        color: #4b5563 !important;
+      }
+
+      html.light .border-outline-variant\/15 {
+        border-color: rgba(75, 85, 99, 0.22) !important;
+      }
+    </style>
+  </head>
+  <body class="selection:bg-primary selection:text-on-primary" id="top">
+    <div class="grain-overlay"></div>
+
+    <nav
+      class="site-nav fixed top-0 left-0 right-0 z-[10000] bg-surface/90 backdrop-blur-md border-b border-outline-variant/20"
+    >
+      <div
+        class="flex items-center justify-between w-full px-6 py-4 max-w-7xl mx-auto gap-4 lg:gap-8"
+      >
+        <div class="flex items-center gap-8 lg:gap-10">
+          <a
+            class="text-xl font-bold tracking-tighter text-neutral-100 dark:text-neutral-50"
+            href="index.html"
+            >Arcway</a
+          >
+          <div class="hidden lg:flex items-center gap-8">
+            <a
+              class="text-neutral-400 hover:text-neutral-100 transition-colors text-sm font-medium"
+              href="index.html#about"
+              >About</a
+            >
+            <a
+              class="text-neutral-400 hover:text-neutral-100 transition-colors text-sm font-medium"
+              href="index.html#services"
+              >Services</a
+            >
+            <a
+              class="text-neutral-400 hover:text-neutral-100 transition-colors text-sm font-medium"
+              href="project-detail.html"
+              >Projects</a
+            >
+            <a
+              class="text-neutral-400 hover:text-neutral-100 transition-colors text-sm font-medium"
+              href="terms.html"
+              >Terms & Conditions</a
+            >
+          </div>
+        </div>
+        <div class="flex items-center gap-2 sm:gap-3">
+          <a
+            class="hidden md:inline-flex bg-primary-container text-on-primary px-4 py-2 text-xs font-bold rounded-sm hover:scale-[1.02] transition-transform duration-300 ease-out"
+            href="index.html#contact"
+            >Work With Us</a
+          >
+          <button
+            aria-label="Switch theme"
+            class="theme-toggle inline-flex h-9 w-9 items-center justify-center rounded-sm border border-outline-variant/30 text-primary hover:border-primary/60 transition-colors"
+            data-theme-toggle
+            type="button"
+          >
+            <span class="material-symbols-outlined" data-theme-icon
+              >light_mode</span
+            >
+          </button>
+          <button
+            aria-controls="mobileMenu"
+            aria-expanded="false"
+            aria-label="Toggle navigation menu"
+            class="lg:hidden text-primary"
+            id="mobileMenuButton"
+            type="button"
+          >
+            <span class="material-symbols-outlined transition-transform duration-300">menu</span>
+          </button>
+        </div>
+      </div>
+      <div
+        class="site-mobile-menu hidden lg:hidden border-t border-outline-variant/20 bg-surface/95"
+        id="mobileMenu"
+      >
+        <div class="max-w-7xl mx-auto px-6 pb-5 pt-4 flex flex-col gap-3">
+          <a
+            class="text-neutral-300 hover:text-neutral-100 transition-colors text-sm font-medium"
+            href="index.html#about"
+            >About</a
+          >
+          <a
+            class="text-neutral-300 hover:text-neutral-100 transition-colors text-sm font-medium"
+            href="index.html#services"
+            >Services</a
+          >
+          <a
+            class="text-neutral-300 hover:text-neutral-100 transition-colors text-sm font-medium"
+            href="project-detail.html"
+            >Projects</a
+          >
+          <a
+            class="text-neutral-300 hover:text-neutral-100 transition-colors text-sm font-medium"
+            href="terms.html"
+            >Terms &amp; Conditions</a
+          >
+          <a
+            class="bg-primary-container text-on-primary px-4 py-2 text-xs font-bold rounded-sm w-fit"
+            href="index.html#contact"
+            >Work With Us</a
+          >
+        </div>
+      </div>
+    </nav>
+
+    <main class="grid-trace pt-24 md:pt-28" data-scroll-container id="main-content">
+      <section class="px-6 py-16 md:py-24 hero-glow reveal">
+        <div class="max-w-5xl mx-auto">
+          <span class="mono-label text-primary mb-4 block">Legal</span>
+          <h1 class="text-4xl md:text-6xl font-extrabold tight-heading mb-6">
+            Terms &amp; Conditions
+          </h1>
+          <p class="text-neutral-400 text-lg leading-relaxed max-w-3xl">
+            These terms govern all freelance and studio services delivered by
+            Arcway. By engaging us for work, you agree to the terms below.
+          </p>
+        </div>
+      </section>
+
+      <section class="px-6 py-16 md:py-24">
+        <div
+          class="max-w-5xl mx-auto bg-surface-container border border-outline-variant/15 p-8 md:p-12 rounded-sm space-y-10"
+        >
+          <div>
+            <h2 class="text-2xl md:text-3xl font-bold mb-3 text-neutral-100">
+              1. Scope of Work
+            </h2>
+            <p class="text-neutral-400 leading-relaxed">
+              Each project is governed by a written proposal, statement of work,
+              or email confirmation outlining deliverables, timeline,
+              assumptions, and responsibilities. Any request outside the agreed
+              scope is treated as a change request and may affect cost and
+              schedule.
+            </p>
+          </div>
+
+          <div>
+            <h2 class="text-2xl md:text-3xl font-bold mb-3 text-neutral-100">
+              2. Payment Terms
+            </h2>
+            <p class="text-neutral-400 leading-relaxed">
+              Work begins after acceptance of the proposal and receipt of any
+              agreed advance payment. Invoices are payable within 7 to 15 days
+              from issue date unless stated otherwise. Delayed payments may
+              pause active work and delivery milestones. Taxes, transfer fees,
+              and statutory charges, if applicable, are payable by the client.
+            </p>
+          </div>
+
+          <div>
+            <h2 class="text-2xl md:text-3xl font-bold mb-3 text-neutral-100">
+              3. Intellectual Property
+            </h2>
+            <p class="text-neutral-400 leading-relaxed">
+              Upon full and final payment, the client receives rights to final
+              approved deliverables created specifically for the project. Arcway
+              retains ownership of pre-existing know-how, reusable code, tools,
+              frameworks, and non-client-specific assets. Third-party libraries,
+              fonts, APIs, and services remain subject to their own licenses and
+              terms.
+            </p>
+          </div>
+
+          <div>
+            <h2 class="text-2xl md:text-3xl font-bold mb-3 text-neutral-100">
+              4. Confidentiality
+            </h2>
+            <p class="text-neutral-400 leading-relaxed">
+              Both parties agree to keep confidential information private and to
+              use it only for project execution. Confidential information
+              includes business plans, credentials, internal documents,
+              technical architecture, and non-public data. This obligation
+              survives project completion.
+            </p>
+          </div>
+
+          <div>
+            <h2 class="text-2xl md:text-3xl font-bold mb-3 text-neutral-100">
+              5. Limitation of Liability
+            </h2>
+            <p class="text-neutral-400 leading-relaxed">
+              Arcway is not liable for indirect, special, incidental, or
+              consequential damages, including loss of profits, business,
+              reputation, or data. To the maximum extent permitted by law,
+              Arcway's total liability for any claim relating to a project is
+              limited to the amount actually paid by the client for that
+              specific project.
+            </p>
+          </div>
+
+          <div>
+            <h2 class="text-2xl md:text-3xl font-bold mb-3 text-neutral-100">
+              6. Governing Law
+            </h2>
+            <p class="text-neutral-400 leading-relaxed">
+              These terms are governed by and interpreted in accordance with the
+              laws of India. Subject to applicable law, courts located in India
+              shall have jurisdiction over disputes arising from these terms or
+              project engagement.
+            </p>
+          </div>
+
+          <div class="pt-4 border-t border-outline-variant/15">
+            <p class="mono-label text-xs text-neutral-500">
+              Last Updated: March 31, 2026
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer
+      class="bg-neutral-900 dark:bg-[#121315] full-width py-12 border-t border-neutral-800/20"
+    >
+      <div
+        class="shell flex flex-col md:flex-row md:items-center md:justify-between gap-4"
+      >
+        <div class="text-neutral-100 font-bold text-center md:text-left">
+          Arcway
+        </div>
+        <div class="flex flex-col sm:flex-row items-center gap-2 sm:gap-4">
+          <p
+            class="text-[10px] font-mono uppercase tracking-widest text-neutral-500 text-center"
+          >
+            © 2026 Arcway Portfolio. All rights reserved.
+          </p>
+          <a
+            class="text-[10px] font-mono uppercase tracking-widest text-neutral-500 hover:text-neutral-200 transition-colors"
+            href="terms.html"
+            >Terms &amp; Conditions</a
+          >
+        </div>
+        <div class="flex items-center justify-center gap-8">
+          <a
+            class="text-neutral-500 hover:text-neutral-200 text-[10px] font-mono uppercase tracking-widest transition-colors"
+            href="#"
+            >LinkedIn</a
+          >
+          <a
+            class="text-neutral-500 hover:text-neutral-200 text-[10px] font-mono uppercase tracking-widest transition-colors"
+            href="#"
+            >GitHub</a
+          >
+          <a
+            aria-label="Back to top"
+            class="back-to-top inline-flex h-8 w-8 items-center justify-center rounded-sm border border-outline-variant/30 text-amber-500 hover:text-primary hover:border-primary/60 transition-colors"
+            href="#top"
+            title="Back to top"
+          >
+            <span class="material-symbols-outlined text-base"
+              >arrow_upward</span
+            >
+          </a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.3/dist/locomotive-scroll.min.js"></script>
+    <script src="script.js"></script>
+    <script src="terms-animations.js"></script>
+  </body>
+</html>

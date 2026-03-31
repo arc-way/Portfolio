@@ -1,0 +1,1120 @@
+<!doctype html>
+
+<html class="dark" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Projects Portfolio | CREA Team</title>
+    <script>
+      (function () {
+        try {
+          var storedTheme = localStorage.getItem("arcway-theme");
+          var prefersDark = window.matchMedia(
+            "(prefers-color-scheme: dark)",
+          ).matches;
+          var useDark = storedTheme ? storedTheme === "dark" : prefersDark;
+
+          document.documentElement.classList.toggle("dark", useDark);
+          document.documentElement.classList.toggle("light", !useDark);
+        } catch (error) {
+          document.documentElement.classList.add("dark");
+        }
+      })();
+    </script>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&family=Space+Grotesk:wght@300;500;700&family=Space+Mono&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+      rel="stylesheet"
+    />
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              surface: "#121315",
+              primary: "#ffd092",
+              "on-surface": "#e3e2e3",
+              "on-surface-variant": "#d7c3ac",
+              "surface-container-highest": "#343536",
+              "surface-container-high": "#292a2b",
+              "surface-container": "#1f2021",
+              "surface-container-low": "#1b1c1d",
+              "surface-container-lowest": "#0d0e0f",
+              "primary-container": "#ffab00",
+              "on-primary": "#452b00",
+              outline: "#a08e79",
+              "outline-variant": "#524433",
+            },
+            fontFamily: {
+              headline: ["Inter"],
+              body: ["Inter"],
+              label: ["Space Grotesk"],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        background: #121315;
+      }
+
+      .material-symbols-outlined {
+        font-variation-settings:
+          "FILL" 0,
+          "wght" 400,
+          "GRAD" 0,
+          "opsz" 24;
+      }
+
+      .shell {
+        width: min(1280px, 92%);
+        margin: 0 auto;
+      }
+
+      .full-width {
+        width: 100%;
+      }
+
+      .grid-trace {
+        background-image:
+          linear-gradient(
+            to right,
+            rgba(82, 68, 51, 0.05) 1px,
+            transparent 1px
+          ),
+          linear-gradient(
+            to bottom,
+            rgba(82, 68, 51, 0.05) 1px,
+            transparent 1px
+          );
+        background-size: 2.75rem 2.75rem;
+      }
+
+      .grain-overlay {
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        z-index: 70;
+        opacity: 0.02;
+        background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBw777-xvVfhYLuS-2Qbl0aAl8GnLEQy9Rhn8dzyeaqmpSVmVZkdZ6h5CvjakxRmFG8kpPbLD0pUltbBe7Sk0Dcd2MisOhuq5mFccF3wK5_086kBEhDH3LGZwGG-ry5q3O7cblHHNeiwe1JpKxdexNpRous2a-vtfa08CE2xuPQsp-ds0XYJBXboJKD0k-_l178kWvNkvGmrjdD-Spn-UABgEL9VoNPn-U_vFRMe1xaMVGW4JFMz6sFMUvQs8rsvyjtrGZ3YEEFyluG");
+      }
+
+      .scroll-progress {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        z-index: 90;
+      }
+
+      .scroll-progress > span {
+        display: block;
+        width: 100%;
+        height: 100%;
+        transform-origin: left center;
+        transform: scaleX(0);
+        background: linear-gradient(90deg, #ffab00 0%, #ffd092 100%);
+      }
+
+      .mono-label {
+        font-family: "Space Grotesk", sans-serif;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+      }
+
+      .hero-line {
+        display: block;
+        overflow: hidden;
+      }
+
+      .hero-line span {
+        display: block;
+      }
+
+      .hero-orb {
+        position: absolute;
+        border-radius: 9999px;
+        filter: blur(55px);
+        pointer-events: none;
+      }
+
+      .project-panel {
+        position: relative;
+        border: 1px solid rgba(82, 68, 51, 0.28);
+        background: linear-gradient(135deg, #1b1c1d 0%, #121315 100%);
+        overflow: hidden;
+      }
+
+      .project-panel::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+          circle at top right,
+          rgba(255, 208, 146, 0.12),
+          rgba(255, 208, 146, 0)
+        );
+        opacity: 0;
+        transition: opacity 0.4s ease;
+      }
+
+      .project-panel:hover::before {
+        opacity: 1;
+      }
+
+      .reveal {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+
+      .timeline-wrap {
+        position: relative;
+      }
+
+      .timeline-line {
+        position: absolute;
+        left: 0.6rem;
+        top: 0;
+        width: 1px;
+        height: 100%;
+        background: rgba(82, 68, 51, 0.45);
+      }
+
+      .timeline-progress {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        transform-origin: top center;
+        transform: scaleY(0);
+        background: linear-gradient(
+          180deg,
+          #ffd092 0%,
+          rgba(255, 208, 146, 0) 100%
+        );
+      }
+
+      .tilt-card {
+        transform-style: preserve-3d;
+        will-change: transform;
+      }
+
+      .stack-chip {
+        border: 1px solid rgba(82, 68, 51, 0.35);
+        background: rgba(27, 28, 29, 0.8);
+        -webkit-backdrop-filter: blur(8px);
+        backdrop-filter: blur(8px);
+      }
+
+      html.light body {
+        background: #f3f4f6;
+        color: #111827;
+      }
+
+      html.light .site-nav,
+      html.light .site-mobile-menu {
+        background: rgba(243, 244, 246, 0.92) !important;
+        border-color: rgba(55, 65, 81, 0.18) !important;
+      }
+
+      html.light .grid-trace {
+        background-image:
+          linear-gradient(
+            to right,
+            rgba(55, 65, 81, 0.07) 1px,
+            transparent 1px
+          ),
+          linear-gradient(
+            to bottom,
+            rgba(55, 65, 81, 0.07) 1px,
+            transparent 1px
+          );
+      }
+
+      html.light .bg-surface,
+      html.light .bg-surface-container,
+      html.light .bg-surface-container-low,
+      html.light .bg-surface-container-lowest,
+      html.light .bg-surface-container-high,
+      html.light .bg-surface-container-highest {
+        background-color: #ffffff !important;
+      }
+
+      html.light .project-panel {
+        background: linear-gradient(135deg, #ffffff 0%, #f3f4f6 100%);
+        border-color: rgba(75, 85, 99, 0.28);
+      }
+
+      html.light .text-on-surface {
+        color: #111827 !important;
+      }
+
+      html.light .text-on-surface-variant,
+      html.light .text-neutral-500 {
+        color: #4b5563 !important;
+      }
+
+      html.light .text-neutral-400,
+      html.light .text-neutral-300 {
+        color: #374151 !important;
+      }
+
+      html.light .border-outline-variant\/20,
+      html.light .border-outline-variant\/30,
+      html.light .border-outline-variant\/40,
+      html.light .border-outline-variant\/25 {
+        border-color: rgba(75, 85, 99, 0.22) !important;
+      }
+
+      html.light .theme-toggle {
+        border-color: rgba(75, 85, 99, 0.28) !important;
+        color: #111827 !important;
+        background-color: #ffffff !important;
+      }
+    </style>
+  </head>
+  <body
+    class="bg-surface text-on-surface font-body selection:bg-primary selection:text-on-primary"
+    id="top"
+  >
+    <div class="scroll-progress"><span id="scrollProgress"></span></div>
+    <div class="grain-overlay"></div>
+
+    <nav
+      class="site-nav sticky top-0 z-[80] bg-surface/70 backdrop-blur-md border-b border-outline-variant/20"
+    >
+      <div class="shell flex items-center justify-between py-4 gap-4 lg:gap-8">
+        <div class="flex items-center gap-8 lg:gap-10">
+          <a
+            class="text-xl font-bold tracking-tight hover:text-primary transition-colors"
+            href="index.html"
+            >Arcway</a
+          >
+          <div class="hidden lg:flex items-center gap-8">
+            <a
+              class="text-neutral-400 hover:text-neutral-100 transition-colors text-sm font-medium"
+              href="#projects-grid"
+              >Projects</a
+            >
+            <a
+              class="text-neutral-400 hover:text-neutral-100 transition-colors text-sm font-medium"
+              href="#delivery-flow"
+              >Delivery Flow</a
+            >
+            <a
+              class="text-neutral-400 hover:text-neutral-100 transition-colors text-sm font-medium"
+              href="#technology-spine"
+              >Tech Spine</a
+            >
+          </div>
+        </div>
+        <div class="flex items-center gap-2 sm:gap-3">
+          <a
+            class="hidden md:inline-flex bg-primary-container text-on-primary px-4 py-2 text-xs font-bold rounded-sm hover:scale-[1.02] transition-transform duration-300 ease-out"
+            href="index.html"
+            >Back to Home</a
+          >
+          <button
+            aria-label="Switch theme"
+            class="theme-toggle inline-flex h-9 w-9 items-center justify-center rounded-sm border border-outline-variant/30 text-primary hover:border-primary/60 transition-colors"
+            data-theme-toggle
+            type="button"
+          >
+            <span class="material-symbols-outlined" data-theme-icon
+              >light_mode</span
+            >
+          </button>
+          <button
+            aria-controls="mobileMenuProjects"
+            aria-expanded="false"
+            aria-label="Toggle projects navigation menu"
+            class="lg:hidden text-primary"
+            id="mobileMenuButtonProjects"
+            type="button"
+          >
+            <span class="material-symbols-outlined">menu</span>
+          </button>
+        </div>
+      </div>
+      <div
+        class="site-mobile-menu hidden lg:hidden border-t border-outline-variant/20 bg-surface/95"
+        id="mobileMenuProjects"
+      >
+        <div class="shell py-4 flex flex-col gap-3">
+          <a
+            class="text-neutral-300 hover:text-neutral-100 transition-colors text-sm font-medium"
+            href="#projects-grid"
+            >Projects</a
+          >
+          <a
+            class="text-neutral-300 hover:text-neutral-100 transition-colors text-sm font-medium"
+            href="#delivery-flow"
+            >Delivery Flow</a
+          >
+          <a
+            class="text-neutral-300 hover:text-neutral-100 transition-colors text-sm font-medium"
+            href="#technology-spine"
+            >Tech Spine</a
+          >
+          <a
+            class="bg-primary-container text-on-primary px-4 py-2 text-xs font-bold rounded-sm w-fit"
+            href="index.html"
+            >Back to Home</a
+          >
+        </div>
+      </div>
+    </nav>
+
+    <main class="grid-trace min-h-screen overflow-x-hidden">
+      <section class="shell relative py-20 md:py-28">
+        <div class="hero-orb bg-primary/20 w-72 h-72 top-16 -left-20"></div>
+        <div class="hero-orb bg-primary/10 w-96 h-96 -bottom-24 right-0"></div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-end">
+          <div class="lg:col-span-8">
+            <span class="mono-label text-primary text-xs mb-6 block hero-badge"
+              >Project Portfolio / Engineering Systems</span
+            >
+            <h1
+              class="text-5xl sm:text-6xl lg:text-8xl font-extrabold leading-[0.9] tracking-[-0.04em] mb-8"
+            >
+              <span class="hero-line"><span>Building high-impact</span></span>
+              <span class="hero-line"
+                ><span class="text-primary/90">digital systems</span></span
+              >
+              <span class="hero-line"
+                ><span>for institutions and operations</span></span
+              >
+            </h1>
+            <p
+              class="text-lg md:text-2xl text-on-surface-variant leading-relaxed max-w-3xl mb-10 hero-copy"
+            >
+              This projects page showcases end-to-end execution across public
+              platforms, railway operations, and institutional digital
+              modernization with measurable outcomes in reliability, speed,
+              discoverability, and process automation.
+            </p>
+            <div class="flex flex-wrap gap-4 mb-10 hero-cta">
+              <a
+                class="px-6 py-3 bg-primary-container text-on-primary font-bold mono-label text-[10px] rounded-sm"
+                href="#projects-grid"
+                >Explore Projects</a
+              >
+              <a
+                class="px-6 py-3 border border-outline-variant/40 text-primary font-bold mono-label text-[10px] rounded-sm"
+                href="#locoinfo"
+                >Jump to Loco-Info</a
+              >
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-3 hero-kpis">
+              <div class="stack-chip p-4">
+                <p class="mono-label text-[9px] text-neutral-500">Projects</p>
+                <p class="text-2xl font-bold mt-1">
+                  <span class="counter-value" data-count="3" data-suffix="+"
+                    >0</span
+                  >
+                </p>
+              </div>
+              <div class="stack-chip p-4">
+                <p class="mono-label text-[9px] text-neutral-500">Domains</p>
+                <p class="text-2xl font-bold mt-1">
+                  <span class="counter-value" data-count="2" data-suffix="+"
+                    >0</span
+                  >
+                </p>
+              </div>
+              <div class="stack-chip p-4">
+                <p class="mono-label text-[9px] text-neutral-500">
+                  Uptime Benchmarks
+                </p>
+                <p class="text-2xl font-bold mt-1">
+                  <span class="counter-value" data-count="99" data-suffix="%+"
+                    >0</span
+                  >
+                </p>
+              </div>
+              <div class="stack-chip p-4">
+                <p class="mono-label text-[9px] text-neutral-500">User Scale</p>
+                <p class="text-2xl font-bold mt-1">
+                  <span class="counter-value" data-count="12000" data-suffix="+"
+                    >0</span
+                  >
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="lg:col-span-4 reveal">
+            <div
+              class="tilt-card relative bg-surface-container border border-outline-variant/30 p-8"
+            >
+              <p class="mono-label text-primary text-[10px] mb-3">
+                Live Operations Radar
+              </p>
+              <h2 class="text-2xl font-bold mb-5">Current Focus Areas</h2>
+              <ul class="space-y-3 text-on-surface-variant leading-relaxed">
+                <li class="flex items-start gap-2">
+                  <span
+                    class="material-symbols-outlined text-primary text-base mt-0.5"
+                    >check_circle</span
+                  >Association platforms with secure membership workflows.
+                </li>
+                <li class="flex items-start gap-2">
+                  <span
+                    class="material-symbols-outlined text-primary text-base mt-0.5"
+                    >check_circle</span
+                  >Institutional websites with high-trust visibility and
+                  navigation.
+                </li>
+                <li class="flex items-start gap-2">
+                  <span
+                    class="material-symbols-outlined text-primary text-base mt-0.5"
+                    >check_circle</span
+                  >Real-time railway maintenance data systems for field
+                  decisions.
+                </li>
+              </ul>
+              <div
+                class="mt-8 border-t border-outline-variant/20 pt-5 text-sm text-neutral-500"
+              >
+                Updated portfolio context: March 2026
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="shell py-8 md:py-12" id="projects-grid">
+        <div
+          class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10 reveal"
+        >
+          <div>
+            <span class="mono-label text-primary text-xs mb-3 block"
+              >Core Projects</span
+            >
+            <h2 class="text-4xl md:text-5xl font-bold tracking-tight">
+              Detailed Project Showcase
+            </h2>
+          </div>
+          <p class="text-on-surface-variant max-w-xl">
+            Every project below includes scope, architecture decisions, and
+            measurable outcomes. Scroll to explore deep details with animated
+            transitions.
+          </p>
+        </div>
+
+        <div class="space-y-8">
+          <article
+            class="project-panel relative p-7 md:p-10 reveal"
+            id="crea-platform"
+          >
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+              <div class="lg:col-span-8">
+                <p class="mono-label text-primary text-[10px] mb-3">
+                  Project 01 / CREA
+                </p>
+                <h3 class="text-3xl md:text-4xl font-bold mb-5 tracking-tight">
+                  CREA Unified Digital Platform
+                </h3>
+                <p class="text-on-surface-variant leading-relaxed text-lg mb-6">
+                  Central Railway Engineers Association needed a secure and
+                  unified digital system to replace fragmented membership,
+                  communication, and document workflows. We delivered a
+                  production platform with structured modules for events, forum,
+                  circulars, manuals, court cases, suggestions, and role-based
+                  administration.
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                  <div
+                    class="bg-surface-container-low p-4 border border-outline-variant/20"
+                  >
+                    <p class="mono-label text-[9px] text-neutral-500 mb-2">
+                      Problem Context
+                    </p>
+                    <p class="text-sm text-on-surface-variant leading-relaxed">
+                      CREA operations were distributed across disconnected
+                      channels, creating delays in communication, reduced
+                      transparency, and high manual coordination overhead.
+                    </p>
+                  </div>
+                  <div
+                    class="bg-surface-container-low p-4 border border-outline-variant/20"
+                  >
+                    <p class="mono-label text-[9px] text-neutral-500 mb-2">
+                      Delivery Scope
+                    </p>
+                    <p class="text-sm text-on-surface-variant leading-relaxed">
+                      Membership lifecycle management, payment integration,
+                      event/news publishing, forum moderation, digital
+                      documents, and administrative analytics dashboard.
+                    </p>
+                  </div>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                  <div
+                    class="bg-surface-container-low p-4 border border-outline-variant/20"
+                  >
+                    <p class="mono-label text-[9px] text-neutral-500">
+                      Workload Reduction
+                    </p>
+                    <p class="text-2xl font-bold mt-1">
+                      <span
+                        class="counter-value"
+                        data-count="70"
+                        data-suffix="%"
+                        >0</span
+                      >
+                    </p>
+                  </div>
+                  <div
+                    class="bg-surface-container-low p-4 border border-outline-variant/20"
+                  >
+                    <p class="mono-label text-[9px] text-neutral-500">
+                      Divisions Covered
+                    </p>
+                    <p class="text-2xl font-bold mt-1">
+                      <span class="counter-value" data-count="5">0</span>
+                    </p>
+                  </div>
+                  <div
+                    class="bg-surface-container-low p-4 border border-outline-variant/20"
+                  >
+                    <p class="mono-label text-[9px] text-neutral-500">
+                      Modules Delivered
+                    </p>
+                    <p class="text-2xl font-bold mt-1">
+                      <span
+                        class="counter-value"
+                        data-count="10"
+                        data-suffix="+"
+                        >0</span
+                      >
+                    </p>
+                  </div>
+                </div>
+                <div
+                  class="mt-6 bg-surface-container p-5 border border-outline-variant/20"
+                >
+                  <p class="mono-label text-primary text-[10px] mb-3">
+                    Detailed Outcomes
+                  </p>
+                  <p class="text-sm text-on-surface-variant leading-relaxed">
+                    The platform created a single operational source of truth
+                    for members and administrators. Payment automation reduced
+                    reconciliation friction, centralized publishing improved
+                    information reach, and role-aware interfaces strengthened
+                    data governance while improving day-to-day usability across
+                    the association.
+                  </p>
+                </div>
+              </div>
+              <aside
+                class="lg:col-span-4 bg-surface-container-high p-6 border border-outline-variant/20 tilt-card"
+              >
+                <p class="mono-label text-primary text-[10px] mb-4">
+                  Architecture
+                </p>
+                <ul
+                  class="text-on-surface-variant leading-relaxed space-y-2 text-sm"
+                >
+                  <li>MERN stack foundation</li>
+                  <li>JWT + RBAC protection</li>
+                  <li>Razorpay membership transactions</li>
+                  <li>Socket.IO admin analytics</li>
+                  <li>Cloudflare + Hostinger deployment</li>
+                </ul>
+              </aside>
+            </div>
+          </article>
+
+          <article
+            class="project-panel relative p-7 md:p-10 reveal"
+            id="ssgmce"
+          >
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+              <div class="lg:col-span-7">
+                <p class="mono-label text-primary text-[10px] mb-3">
+                  Project 02 / SSGMCE
+                </p>
+                <h3 class="text-3xl md:text-4xl font-bold mb-5 tracking-tight">
+                  SSGMCE Website Modernization
+                </h3>
+                <p class="text-on-surface-variant leading-relaxed text-lg mb-6">
+                  We redesigned the public digital experience of Shri Sant
+                  Gajanan Maharaj College of Engineering into a modern,
+                  high-trust institutional platform. The final build prioritizes
+                  discoverability, admissions-ready information flow, leadership
+                  visibility, campus life modules, and recruitment credibility.
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                  <div
+                    class="bg-surface-container-low p-4 border border-outline-variant/20"
+                  >
+                    <p class="mono-label text-[9px] text-neutral-500 mb-2">
+                      Before-State Gaps
+                    </p>
+                    <p class="text-sm text-on-surface-variant leading-relaxed">
+                      Institutional credibility, student outcomes, and
+                      department-level entry points were not consistently
+                      surfaced for users making fast admission and trust
+                      decisions.
+                    </p>
+                  </div>
+                  <div
+                    class="bg-surface-container-low p-4 border border-outline-variant/20"
+                  >
+                    <p class="mono-label text-[9px] text-neutral-500 mb-2">
+                      After-State Experience
+                    </p>
+                    <p class="text-sm text-on-surface-variant leading-relaxed">
+                      Structured information architecture now guides visitors
+                      through academics, campus life, placements, faculty,
+                      events, and leadership in a clear, conversion-oriented
+                      flow.
+                    </p>
+                  </div>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+                  <div
+                    class="bg-surface-container-low p-4 border border-outline-variant/20"
+                  >
+                    <p class="mono-label text-[9px] text-neutral-500">Years</p>
+                    <p class="text-2xl font-bold mt-1">
+                      <span
+                        class="counter-value"
+                        data-count="41"
+                        data-suffix="+"
+                        >0</span
+                      >
+                    </p>
+                  </div>
+                  <div
+                    class="bg-surface-container-low p-4 border border-outline-variant/20"
+                  >
+                    <p class="mono-label text-[9px] text-neutral-500">
+                      Departments
+                    </p>
+                    <p class="text-2xl font-bold mt-1">
+                      <span class="counter-value" data-count="7">0</span>
+                    </p>
+                  </div>
+                  <div
+                    class="bg-surface-container-low p-4 border border-outline-variant/20"
+                  >
+                    <p class="mono-label text-[9px] text-neutral-500">
+                      Students
+                    </p>
+                    <p class="text-2xl font-bold mt-1">
+                      <span
+                        class="counter-value"
+                        data-count="3000"
+                        data-suffix="+"
+                        >0</span
+                      >
+                    </p>
+                  </div>
+                  <div
+                    class="bg-surface-container-low p-4 border border-outline-variant/20"
+                  >
+                    <p class="mono-label text-[9px] text-neutral-500">
+                      Recruiters
+                    </p>
+                    <p class="text-2xl font-bold mt-1">
+                      <span
+                        class="counter-value"
+                        data-count="35"
+                        data-suffix="+"
+                        >0</span
+                      >
+                    </p>
+                  </div>
+                </div>
+                <div
+                  class="mt-6 bg-surface-container p-5 border border-outline-variant/20"
+                >
+                  <p class="mono-label text-primary text-[10px] mb-3">
+                    Detailed Outcomes
+                  </p>
+                  <p class="text-sm text-on-surface-variant leading-relaxed">
+                    We transformed the website into an admissions-ready digital
+                    front door by elevating proof points, department
+                    discoverability, and campus culture signals. The redesign
+                    now supports multiple personas at once: prospective
+                    students, parents, alumni, recruiters, and academic
+                    stakeholders.
+                  </p>
+                </div>
+              </div>
+              <aside class="lg:col-span-5 grid grid-cols-1 gap-4">
+                <div
+                  class="bg-surface-container-low p-5 border border-outline-variant/20"
+                >
+                  <p class="mono-label text-primary text-[10px] mb-3">
+                    Before Work
+                  </p>
+                  <p
+                    class="text-sm text-on-surface-variant leading-relaxed mb-4"
+                  >
+                    Legacy website with limited structured pathways for
+                    admissions, placements, and decision-focused stakeholder
+                    browsing.
+                  </p>
+                  <a
+                    class="text-primary underline underline-offset-4 text-xs"
+                    href="https://ssgmce.ac.in"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >https://ssgmce.ac.in</a
+                  >
+                </div>
+                <div
+                  class="bg-surface-container-high p-5 border border-primary/20"
+                >
+                  <p class="mono-label text-primary text-[10px] mb-3">
+                    After Work
+                  </p>
+                  <p
+                    class="text-sm text-on-surface-variant leading-relaxed mb-4"
+                  >
+                    Rich IA with dedicated modules for About, Admissions,
+                    Departments, Placements, Faculty, Events, News, Gallery,
+                    alumni, and campus life.
+                  </p>
+                  <a
+                    class="text-primary underline underline-offset-4 text-xs"
+                    href="https://website-one-sigma-90.vercel.app/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >https://website-one-sigma-90.vercel.app</a
+                  >
+                </div>
+              </aside>
+            </div>
+          </article>
+
+          <article
+            class="project-panel relative p-7 md:p-10 reveal"
+            id="locoinfo"
+          >
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+              <div class="lg:col-span-8">
+                <p class="mono-label text-primary text-[10px] mb-3">
+                  Project 03 / LOCO-INFO
+                </p>
+                <h3 class="text-3xl md:text-4xl font-bold mb-5 tracking-tight">
+                  Loco-Info Production System
+                </h3>
+                <p class="text-on-surface-variant leading-relaxed text-lg mb-6">
+                  We developed Loco-Info, a production system digitizing
+                  locomotive maintenance for Electric Loco Shed, Bhusawal. The
+                  solution serves 400+ railway staff across 50+ units with a
+                  Flutter front-end, role-based access, and real-time database
+                  architecture. A dedicated streaming pipeline reduced retrieval
+                  windows from 30 minutes to under 5 seconds with 99%+ uptime.
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                  <div
+                    class="bg-surface-container-low p-4 border border-outline-variant/20"
+                  >
+                    <p class="mono-label text-[9px] text-neutral-500 mb-2">
+                      Operational Challenge
+                    </p>
+                    <p class="text-sm text-on-surface-variant leading-relaxed">
+                      Maintenance teams needed faster operational visibility
+                      across shifts, but legacy workflows relied on delayed
+                      records and manual retrieval paths.
+                    </p>
+                  </div>
+                  <div
+                    class="bg-surface-container-low p-4 border border-outline-variant/20"
+                  >
+                    <p class="mono-label text-[9px] text-neutral-500 mb-2">
+                      System Capability
+                    </p>
+                    <p class="text-sm text-on-surface-variant leading-relaxed">
+                      Real-time database updates, role-aware workflows, and
+                      recent-activity logs created a reliable operational
+                      timeline for supervisors and field engineers.
+                    </p>
+                  </div>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                  <div
+                    class="bg-surface-container-low p-4 border border-outline-variant/20"
+                  >
+                    <p class="mono-label text-[9px] text-neutral-500">
+                      Staff Coverage
+                    </p>
+                    <p class="text-2xl font-bold mt-1">
+                      <span
+                        class="counter-value"
+                        data-count="400"
+                        data-suffix="+"
+                        >0</span
+                      >
+                    </p>
+                  </div>
+                  <div
+                    class="bg-surface-container-low p-4 border border-outline-variant/20"
+                  >
+                    <p class="mono-label text-[9px] text-neutral-500">
+                      Operational Units
+                    </p>
+                    <p class="text-2xl font-bold mt-1">
+                      <span
+                        class="counter-value"
+                        data-count="50"
+                        data-suffix="+"
+                        >0</span
+                      >
+                    </p>
+                  </div>
+                  <div
+                    class="bg-surface-container-low p-4 border border-outline-variant/20"
+                  >
+                    <p class="mono-label text-[9px] text-neutral-500">
+                      Data Retrieval
+                    </p>
+                    <p class="text-2xl font-bold mt-1">
+                      <span
+                        class="counter-value"
+                        data-prefix="<"
+                        data-count="5"
+                        data-suffix="s"
+                        >0</span
+                      >
+                    </p>
+                  </div>
+                </div>
+                <div
+                  class="mt-6 bg-surface-container p-5 border border-outline-variant/20"
+                >
+                  <p class="mono-label text-primary text-[10px] mb-3">
+                    Detailed Outcomes
+                  </p>
+                  <p class="text-sm text-on-surface-variant leading-relaxed">
+                    Loco-Info moved maintenance intelligence from delayed
+                    record-checking to live, action-ready status monitoring.
+                    Teams now use faster data retrieval, clearer accountability
+                    through the latest 100 activity events, and high-uptime
+                    operations to execute maintenance decisions with lower
+                    latency and higher confidence.
+                  </p>
+                </div>
+              </div>
+              <aside
+                class="lg:col-span-4 bg-surface-container-high p-6 border border-primary/20 tilt-card"
+              >
+                <p class="mono-label text-primary text-[10px] mb-4">Insights</p>
+                <ul
+                  class="text-on-surface-variant leading-relaxed space-y-2 text-sm mb-5"
+                >
+                  <li>
+                    Developed Loco-Info for locomotive maintenance serving 400+
+                    railway staff across 50+ units.
+                  </li>
+                  <li>
+                    Implemented Flutter front-end with role-based access and a
+                    real-time database.
+                  </li>
+                  <li>
+                    Included a rolling log of the 100 most recent operational
+                    activities.
+                  </li>
+                  <li>
+                    Reduced retrieval time from 30 minutes to under 5 seconds,
+                    with 99%+ uptime.
+                  </li>
+                </ul>
+                <p class="text-xs text-neutral-500 leading-relaxed">
+                  Built to improve real-time visibility, shift handovers, and
+                  decision speed during active locomotive maintenance cycles.
+                </p>
+              </aside>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="shell py-20 md:py-24" id="delivery-flow">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+          <div class="lg:col-span-4 reveal">
+            <span class="mono-label text-primary text-xs mb-4 block"
+              >Execution Framework</span
+            >
+            <h2 class="text-4xl md:text-5xl font-bold tracking-tight mb-5">
+              Delivery Flow
+            </h2>
+            <p class="text-on-surface-variant leading-relaxed">
+              Our projects follow a structured approach from discovery to
+              deployment, balancing UX clarity, architecture rigor, and
+              measurable delivery outcomes.
+            </p>
+          </div>
+          <div class="lg:col-span-8 reveal">
+            <div class="timeline-wrap pl-8 md:pl-10">
+              <div class="timeline-line">
+                <div class="timeline-progress" id="timelineProgress"></div>
+              </div>
+              <div class="space-y-10">
+                <article class="timeline-item">
+                  <p class="mono-label text-primary text-[10px] mb-2">
+                    Step 01
+                  </p>
+                  <h3 class="text-2xl font-bold mb-2">
+                    Discovery and System Audit
+                  </h3>
+                  <p class="text-on-surface-variant">
+                    Mapped legacy workflows, user roles, bottlenecks, and
+                    business-critical pathways.
+                  </p>
+                </article>
+                <article class="timeline-item">
+                  <p class="mono-label text-primary text-[10px] mb-2">
+                    Step 02
+                  </p>
+                  <h3 class="text-2xl font-bold mb-2">
+                    Information Architecture and UX Direction
+                  </h3>
+                  <p class="text-on-surface-variant">
+                    Reframed navigation, section hierarchy, and content density
+                    for faster discovery.
+                  </p>
+                </article>
+                <article class="timeline-item">
+                  <p class="mono-label text-primary text-[10px] mb-2">
+                    Step 03
+                  </p>
+                  <h3 class="text-2xl font-bold mb-2">
+                    Engineering and Security Layers
+                  </h3>
+                  <p class="text-on-surface-variant">
+                    Implemented robust auth, role controls, and production-grade
+                    APIs and data models.
+                  </p>
+                </article>
+                <article class="timeline-item">
+                  <p class="mono-label text-primary text-[10px] mb-2">
+                    Step 04
+                  </p>
+                  <h3 class="text-2xl font-bold mb-2">
+                    Launch, Monitoring, and Handover
+                  </h3>
+                  <p class="text-on-surface-variant">
+                    Shipped stable builds, verified live behavior, and handed
+                    over with clear operating flows.
+                  </p>
+                </article>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="shell py-16 md:py-20" id="technology-spine">
+        <div class="reveal">
+          <span class="mono-label text-primary text-xs mb-4 block"
+            >Technology Spine</span
+          >
+          <h2 class="text-4xl md:text-5xl font-bold tracking-tight mb-8">
+            Stack and Platform Layering
+          </h2>
+          <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-3">
+            <div class="stack-chip p-4 text-center">React</div>
+            <div class="stack-chip p-4 text-center">Flutter</div>
+            <div class="stack-chip p-4 text-center">Node.js</div>
+            <div class="stack-chip p-4 text-center">Express</div>
+            <div class="stack-chip p-4 text-center">MongoDB</div>
+            <div class="stack-chip p-4 text-center">JWT</div>
+            <div class="stack-chip p-4 text-center">RBAC</div>
+            <div class="stack-chip p-4 text-center">Socket.IO</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="shell py-20 md:py-24">
+        <div
+          class="reveal bg-surface-container p-10 md:p-14 border border-outline-variant/25"
+        >
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            <div class="lg:col-span-8">
+              <span class="mono-label text-primary text-xs mb-4 block"
+                >Next Build</span
+              >
+              <h2 class="text-4xl md:text-5xl font-bold tracking-tight mb-4">
+                Planning the next high-impact deployment?
+              </h2>
+              <p class="text-on-surface-variant text-lg leading-relaxed">
+                We can architect your next production-grade platform with
+                measurable outcomes in speed, operations visibility, and
+                structured digital communication.
+              </p>
+            </div>
+            <div class="lg:col-span-4 flex lg:justify-end">
+              <a
+                class="px-7 py-4 bg-primary-container text-on-primary font-bold mono-label text-[10px] rounded-sm"
+                href="index.html#contact"
+                >Start a Discussion</a
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer
+      class="bg-neutral-900 dark:bg-[#121315] full-width py-12 border-t border-neutral-800/20"
+    >
+      <div
+        class="shell flex flex-col md:flex-row md:items-center md:justify-between gap-4"
+      >
+        <div class="text-neutral-100 font-bold text-center md:text-left">
+          Arcway
+        </div>
+        <p
+          class="text-[10px] font-mono uppercase tracking-widest text-neutral-500 text-center"
+        >
+          © 2026 Arcway Portfolio. All rights reserved.
+        </p>
+        <div class="flex items-center justify-center gap-8">
+          <a
+            class="text-neutral-500 hover:text-neutral-200 text-[10px] font-mono uppercase tracking-widest transition-colors"
+            href="#"
+            >LinkedIn</a
+          >
+          <a
+            class="text-neutral-500 hover:text-neutral-200 text-[10px] font-mono uppercase tracking-widest transition-colors"
+            href="#"
+            >GitHub</a
+          >
+          <a
+            aria-label="Back to top"
+            class="back-to-top inline-flex h-8 w-8 items-center justify-center rounded-sm border border-outline-variant/30 text-amber-500 hover:text-primary hover:border-primary/60 transition-colors"
+            href="#top"
+            title="Back to top"
+          >
+            <span class="material-symbols-outlined text-base"
+              >arrow_upward</span
+            >
+          </a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="projects-animations.js"></script>
+  </body>
+</html>

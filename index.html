@@ -1,0 +1,1264 @@
+<!doctype html>
+
+<html class="dark" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Arcway Portfolio | Digital Product Studio</title>
+    <script>
+      (function () {
+        try {
+          var storedTheme = localStorage.getItem("arcway-theme");
+          var prefersDark = window.matchMedia(
+            "(prefers-color-scheme: dark)",
+          ).matches;
+          var useDark = storedTheme ? storedTheme === "dark" : prefersDark;
+
+          document.documentElement.classList.toggle("dark", useDark);
+          document.documentElement.classList.toggle("light", !useDark);
+        } catch (error) {
+          document.documentElement.classList.add("dark");
+        }
+      })();
+    </script>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&amp;family=Space+Grotesk:wght@300;500;700&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              surface: "#121315",
+              primary: "#ffd092",
+              "inverse-on-surface": "#303032",
+              "secondary-fixed": "#efdbff",
+              "on-error-container": "#ffdad6",
+              "on-surface": "#e3e2e3",
+              "inverse-surface": "#e3e2e3",
+              "surface-container-highest": "#343536",
+              "on-tertiary-container": "#00581f",
+              "secondary-fixed-dim": "#dbb8ff",
+              error: "#ffb4ab",
+              "surface-variant": "#343536",
+              secondary: "#dbb8ff",
+              "on-tertiary": "#003912",
+              "surface-container-lowest": "#0d0e0f",
+              "surface-dim": "#121315",
+              "on-tertiary-fixed-variant": "#00531d",
+              "primary-fixed-dim": "#ffb950",
+              outline: "#a08e79",
+              "on-primary-fixed-variant": "#624000",
+              tertiary: "#99eb9e",
+              "on-surface-variant": "#d7c3ac",
+              "on-background": "#e3e2e3",
+              "primary-fixed": "#ffddb3",
+              "on-secondary": "#480082",
+              "on-tertiary-fixed": "#002107",
+              background: "#121315",
+              "error-container": "#93000a",
+              "on-primary-container": "#694400",
+              "surface-container-high": "#292a2b",
+              "outline-variant": "#524433",
+              "primary-container": "#ffab00",
+              "surface-bright": "#38393a",
+              "tertiary-container": "#7ece85",
+              "on-primary-fixed": "#291800",
+              "on-secondary-fixed-variant": "#6700b6",
+              "tertiary-fixed-dim": "#88d98e",
+              "surface-container-low": "#1b1c1d",
+              "on-secondary-fixed": "#2b0052",
+              "surface-tint": "#ffb950",
+              "tertiary-fixed": "#a4f6a8",
+              "secondary-container": "#8000e1",
+              "on-error": "#690005",
+              "on-primary": "#452b00",
+              "surface-container": "#1f2021",
+              "on-secondary-container": "#e3c5ff",
+              "inverse-primary": "#825500",
+            },
+            fontFamily: {
+              headline: ["Inter"],
+              body: ["Inter"],
+              label: ["Space Grotesk"],
+            },
+            borderRadius: {
+              DEFAULT: "0.125rem",
+              lg: "0.25rem",
+              xl: "0.5rem",
+              full: "0.75rem",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      body {
+        background-color: #121315;
+        color: #e3e2e3;
+        font-family: "Inter", sans-serif;
+        overflow-x: hidden;
+      }
+
+      .full-width {
+        width: 100%;
+      }
+
+      .shell {
+        width: min(1280px, 92%);
+        margin: 0 auto;
+      }
+
+      .grain-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 9999;
+        opacity: 0.02;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+      }
+
+      .grid-trace {
+        background-size: 40px 40px;
+        background-image:
+          linear-gradient(
+            to right,
+            rgba(82, 68, 51, 0.05) 1px,
+            transparent 1px
+          ),
+          linear-gradient(
+            to bottom,
+            rgba(82, 68, 51, 0.05) 1px,
+            transparent 1px
+          );
+      }
+
+      .hero-glow {
+        background: radial-gradient(
+          circle at 50% 50%,
+          rgba(255, 208, 146, 0.05) 0%,
+          rgba(18, 19, 21, 1) 70%
+        );
+      }
+
+      .tight-heading {
+        letter-spacing: -0.04em;
+      }
+
+      .mono-label {
+        font-family: "Space Grotesk", monospace;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+
+      .material-symbols-outlined {
+        font-variation-settings:
+          "FILL" 0,
+          "wght" 400,
+          "GRAD" 0,
+          "opsz" 24;
+      }
+
+      .contact-control {
+        width: 100%;
+        background: #0d0e0f;
+        border: 1px solid rgba(82, 68, 51, 0.35);
+        color: #e3e2e3;
+        border-radius: 0.125rem;
+        transition: border-color 0.2s ease;
+      }
+
+      .contact-control::placeholder {
+        color: #7a7f8c;
+        opacity: 1;
+      }
+
+      .contact-control:focus {
+        outline: none;
+        border-color: #ffb950;
+      }
+
+      input.contact-control,
+      textarea.contact-control,
+      select.contact-control {
+        background-color: #0d0e0f !important;
+        color: #e3e2e3 !important;
+      }
+
+      input.contact-control:-webkit-autofill,
+      input.contact-control:-webkit-autofill:hover,
+      input.contact-control:-webkit-autofill:focus,
+      textarea.contact-control:-webkit-autofill,
+      textarea.contact-control:-webkit-autofill:hover,
+      textarea.contact-control:-webkit-autofill:focus,
+      select.contact-control:-webkit-autofill,
+      select.contact-control:-webkit-autofill:hover,
+      select.contact-control:-webkit-autofill:focus {
+        -webkit-text-fill-color: #e3e2e3 !important;
+        caret-color: #e3e2e3 !important;
+        -webkit-box-shadow: 0 0 0 1000px #0d0e0f inset !important;
+        box-shadow: 0 0 0 1000px #0d0e0f inset !important;
+        border: 1px solid rgba(82, 68, 51, 0.35) !important;
+        transition: background-color 9999s ease-in-out 0s;
+      }
+
+      input.contact-control:-moz-autofill,
+      textarea.contact-control:-moz-autofill,
+      select.contact-control:-moz-autofill {
+        box-shadow: 0 0 0 1000px #0d0e0f inset !important;
+        -moz-text-fill-color: #e3e2e3 !important;
+      }
+
+      input.contact-control,
+      select.contact-control {
+        height: 3.5rem;
+        padding: 0 1rem;
+        line-height: 1;
+      }
+
+      textarea.contact-control {
+        min-height: 10rem;
+        padding: 0.875rem 1rem;
+        line-height: 1.5;
+        resize: vertical;
+      }
+
+      html.light body {
+        background-color: #f3f4f6;
+        color: #111827;
+      }
+
+      html.light .site-nav,
+      html.light .site-mobile-menu {
+        background: rgba(243, 244, 246, 0.92) !important;
+        border-color: rgba(55, 65, 81, 0.18) !important;
+      }
+
+      html.light .grid-trace {
+        background-image:
+          linear-gradient(
+            to right,
+            rgba(55, 65, 81, 0.07) 1px,
+            transparent 1px
+          ),
+          linear-gradient(
+            to bottom,
+            rgba(55, 65, 81, 0.07) 1px,
+            transparent 1px
+          );
+      }
+
+      html.light .hero-glow {
+        background: radial-gradient(
+          circle at 50% 50%,
+          rgba(255, 171, 0, 0.11) 0%,
+          rgba(243, 244, 246, 1) 70%
+        );
+      }
+
+      html.light .bg-surface,
+      html.light .bg-surface-container,
+      html.light .bg-surface-container-low,
+      html.light .bg-surface-container-lowest,
+      html.light .bg-surface-container-high,
+      html.light .bg-surface-container-highest {
+        background-color: #ffffff !important;
+      }
+
+      html.light .text-on-surface {
+        color: #111827 !important;
+      }
+
+      html.light .text-on-surface-variant,
+      html.light .text-neutral-500 {
+        color: #4b5563 !important;
+      }
+
+      html.light .text-neutral-400,
+      html.light .text-neutral-300 {
+        color: #374151 !important;
+      }
+
+      html.light .text-neutral-100,
+      html.light .dark\:text-neutral-50 {
+        color: #111827 !important;
+      }
+
+      html.light .border-outline-variant\/20,
+      html.light .border-outline-variant\/30,
+      html.light .border-outline-variant\/40,
+      html.light .border-outline-variant\/15,
+      html.light .border-outline-variant\/10,
+      html.light .border-outline-variant\/5 {
+        border-color: rgba(75, 85, 99, 0.2) !important;
+      }
+
+      html.light .contact-control {
+        background: #ffffff;
+        border-color: rgba(75, 85, 99, 0.3);
+        color: #111827;
+      }
+
+      html.light .contact-control::placeholder {
+        color: #6b7280;
+      }
+
+      html.light input.contact-control,
+      html.light textarea.contact-control,
+      html.light select.contact-control {
+        background-color: #ffffff !important;
+        color: #111827 !important;
+      }
+
+      html.light .theme-toggle {
+        border-color: rgba(75, 85, 99, 0.28) !important;
+        color: #111827 !important;
+        background-color: #ffffff !important;
+      }
+    </style>
+  </head>
+  <body class="selection:bg-primary selection:text-on-primary" id="top">
+    <div class="grain-overlay"></div>
+    <!-- Navigation Shell -->
+    <nav
+      class="site-nav fixed top-0 left-0 right-0 z-[10000] bg-surface/90 backdrop-blur-md border-b border-outline-variant/20"
+    >
+      <div
+        class="flex items-center justify-between w-full px-6 py-4 max-w-7xl mx-auto gap-4 lg:gap-8"
+      >
+        <div class="flex items-center gap-8 lg:gap-10">
+          <div
+            class="text-xl font-bold tracking-tighter text-neutral-100 dark:text-neutral-50"
+          >
+            Arcway
+          </div>
+          <div class="hidden lg:flex items-center gap-8">
+            <a
+              class="text-neutral-400 hover:text-neutral-100 transition-colors text-sm font-medium"
+              href="#about"
+              >About</a
+            >
+            <a
+              class="text-neutral-400 hover:text-neutral-100 transition-colors text-sm font-medium"
+              href="#services"
+              >Services</a
+            >
+            <a
+              class="text-neutral-400 hover:text-neutral-100 transition-colors text-sm font-medium"
+              href="project-detail.html"
+              >Projects</a
+            >
+          </div>
+        </div>
+        <div class="flex items-center gap-2 sm:gap-3">
+          <a
+            class="hidden md:inline-flex bg-primary-container text-on-primary px-4 py-2 text-xs font-bold rounded-sm hover:scale-[1.02] transition-transform duration-300 ease-out"
+            href="#contact"
+            >Work With Us</a
+          >
+          <button
+            aria-label="Switch theme"
+            class="theme-toggle inline-flex h-9 w-9 items-center justify-center rounded-sm border border-outline-variant/30 text-primary hover:border-primary/60 transition-colors"
+            data-theme-toggle
+            type="button"
+          >
+            <span class="material-symbols-outlined" data-theme-icon
+              >light_mode</span
+            >
+          </button>
+          <button
+            aria-controls="mobileMenu"
+            aria-expanded="false"
+            aria-label="Toggle navigation menu"
+            class="lg:hidden text-primary"
+            id="mobileMenuButton"
+            type="button"
+          >
+            <span class="material-symbols-outlined">menu</span>
+          </button>
+        </div>
+      </div>
+      <div
+        class="site-mobile-menu hidden lg:hidden border-t border-outline-variant/20 bg-surface/95"
+        id="mobileMenu"
+      >
+        <div class="max-w-7xl mx-auto px-6 pb-5 pt-4 flex flex-col gap-3">
+          <a
+            class="text-neutral-300 hover:text-neutral-100 transition-colors text-sm font-medium"
+            href="#about"
+            >About</a
+          >
+          <a
+            class="text-neutral-300 hover:text-neutral-100 transition-colors text-sm font-medium"
+            href="#services"
+            >Services</a
+          >
+          <a
+            class="text-neutral-300 hover:text-neutral-100 transition-colors text-sm font-medium"
+            href="project-detail.html"
+            >Projects</a
+          >
+          <a
+            class="bg-primary-container text-on-primary px-4 py-2 text-xs font-bold rounded-sm w-fit"
+            href="#contact"
+            >Work With Us</a
+          >
+        </div>
+      </div>
+    </nav>
+    <main class="grid-trace pt-20" data-scroll-container>
+      <!-- Hero Section -->
+      <section
+        class="relative min-h-[921px] flex items-center px-6 overflow-hidden hero-glow"
+      >
+        <div
+          class="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center"
+        >
+          <div class="lg:col-span-8">
+            <span class="mono-label text-primary mb-6 block text-sm"
+              >Arcway Portfolio</span
+            >
+            <h1
+              class="display-lg text-6xl md:text-8xl font-extrabold tight-heading mb-8 text-on-surface leading-[0.9]"
+            >
+              Designing and Engineering
+              <span class="text-primary">High-Impact Digital Products</span>
+            </h1>
+            <p class="text-xl text-neutral-400 max-w-2xl mb-10 leading-relaxed">
+              Arcway is a product-focused engineering studio helping teams ship
+              elegant, reliable, and measurable digital platforms across web,
+              mobile, and operational systems.
+            </p>
+            <div class="flex flex-wrap gap-6">
+              <a
+                class="bg-primary-container text-on-primary px-8 py-4 font-bold rounded-sm hover:scale-[1.02] transition-transform shadow-[0_0_20px_rgba(255,171,0,0.15)] flex items-center gap-2"
+                href="#contact"
+              >
+                Start a Project
+                <span class="material-symbols-outlined text-sm"
+                  >arrow_forward</span
+                >
+              </a>
+              <a
+                class="border border-outline-variant/30 text-primary px-8 py-4 font-bold rounded-sm hover:bg-surface-container-low transition-colors"
+                href="project-detail.html"
+              >
+                View Projects
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- Abstract Architecture Visual -->
+        <div
+          class="absolute right-0 top-1/2 -translate-y-1/2 w-1/3 h-2/3 opacity-20 hidden lg:block"
+        >
+          <div
+            class="w-full h-full border-l border-t border-outline-variant/20 relative"
+          >
+            <div
+              class="absolute bottom-0 right-0 w-32 h-32 border-r border-b border-primary/40"
+            ></div>
+          </div>
+        </div>
+      </section>
+      <!-- About Section -->
+      <section class="py-24 px-6 bg-surface-container-low" id="about">
+        <div class="max-w-7xl mx-auto">
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+            <div>
+              <span class="mono-label text-primary mb-4 block"
+                >The Narrative</span
+              >
+              <h2 class="text-4xl font-bold tight-heading mb-8">
+                We build digital systems where design clarity meets engineering
+                depth.
+              </h2>
+              <div class="space-y-6 text-neutral-400 text-lg">
+                <p>
+                  Arcway works with institutions, operational teams, and
+                  startups to transform fragmented workflows into modern digital
+                  experiences.
+                </p>
+                <p>
+                  Our portfolio spans association platforms, institutional
+                  websites, and real-time operations systems built for speed,
+                  reliability, and long-term maintainability.
+                </p>
+              </div>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div
+                class="p-8 bg-surface-container-lowest border border-outline-variant/5 rounded-sm"
+              >
+                <span class="text-primary text-3xl font-bold mb-2 block"
+                  >01</span
+                >
+                <h3 class="font-bold mb-2">Research-Led Discovery</h3>
+                <p class="text-sm text-neutral-500">
+                  We map product goals, user behavior, and system constraints
+                  before writing code.
+                </p>
+              </div>
+              <div
+                class="p-8 bg-surface-container-lowest border border-outline-variant/5 rounded-sm mt-8"
+              >
+                <span class="text-primary text-3xl font-bold mb-2 block"
+                  >02</span
+                >
+                <h3 class="font-bold mb-2">Bold Product Design</h3>
+                <p class="text-sm text-neutral-500">
+                  Interface systems designed for trust, clarity, and action.
+                </p>
+              </div>
+              <div
+                class="p-8 bg-surface-container-lowest border border-outline-variant/5 rounded-sm"
+              >
+                <span class="text-primary text-3xl font-bold mb-2 block"
+                  >03</span
+                >
+                <h3 class="font-bold mb-2">Scalable Engineering</h3>
+                <p class="text-sm text-neutral-500">
+                  Clean architecture and performance-first implementation across
+                  the stack.
+                </p>
+              </div>
+              <div
+                class="p-8 bg-surface-container-lowest border border-outline-variant/5 rounded-sm mt-8"
+              >
+                <span class="text-primary text-3xl font-bold mb-2 block"
+                  >04</span
+                >
+                <h3 class="font-bold mb-2">Launch & Growth</h3>
+                <p class="text-sm text-neutral-500">
+                  Deployment, monitoring, and iterative improvement after
+                  launch.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Services Section -->
+      <section class="py-32 px-6" id="services">
+        <div class="max-w-7xl mx-auto">
+          <div class="mb-20">
+            <span class="mono-label text-primary mb-4 block">Capabilities</span>
+            <h2 class="text-5xl font-bold tight-heading">
+              Arcway Core Expertise
+            </h2>
+          </div>
+          <div
+            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-0 border border-outline-variant/10"
+          >
+            <!-- Web Dev -->
+            <div
+              class="p-10 bg-surface group hover:bg-surface-container-high transition-all duration-500 border-r border-b border-outline-variant/10"
+            >
+              <span
+                class="material-symbols-outlined text-primary text-4xl mb-6 group-hover:scale-110 transition-transform block"
+                >terminal</span
+              >
+              <h3 class="text-xl font-bold mb-4">Web Platforms</h3>
+              <p class="text-neutral-500 text-sm leading-relaxed mb-6">
+                High-performance websites and web apps built for conversion,
+                discoverability, and smooth operations.
+              </p>
+              <div
+                class="w-8 h-[2px] bg-outline-variant group-hover:bg-primary transition-colors"
+              ></div>
+            </div>
+            <!-- App Dev -->
+            <div
+              class="p-10 bg-surface group hover:bg-surface-container-high transition-all duration-500 border-r border-b border-outline-variant/10"
+            >
+              <span
+                class="material-symbols-outlined text-primary text-4xl mb-6 group-hover:scale-110 transition-transform block"
+                >smartphone</span
+              >
+              <h3 class="text-xl font-bold mb-4">Mobile Products</h3>
+              <p class="text-neutral-500 text-sm leading-relaxed mb-6">
+                Cross-platform mobile experiences with robust role-based and
+                real-time workflows.
+              </p>
+              <div
+                class="w-8 h-[2px] bg-outline-variant group-hover:bg-primary transition-colors"
+              ></div>
+            </div>
+            <!-- UI/UX -->
+            <div
+              class="p-10 bg-surface group hover:bg-surface-container-high transition-all duration-500 border-r border-b border-outline-variant/10"
+            >
+              <span
+                class="material-symbols-outlined text-primary text-4xl mb-6 group-hover:scale-110 transition-transform block"
+                >grid_view</span
+              >
+              <h3 class="text-xl font-bold mb-4">UX Systems</h3>
+              <p class="text-neutral-500 text-sm leading-relaxed mb-6">
+                Structured interface patterns, component language, and journey
+                architecture for complex products.
+              </p>
+              <div
+                class="w-8 h-[2px] bg-outline-variant group-hover:bg-primary transition-colors"
+              ></div>
+            </div>
+            <!-- Consulting -->
+            <div
+              class="p-10 bg-surface group hover:bg-surface-container-high transition-all duration-500 border-b border-outline-variant/10"
+            >
+              <span
+                class="material-symbols-outlined text-primary text-4xl mb-6 group-hover:scale-110 transition-transform block"
+                >architecture</span
+              >
+              <h3 class="text-xl font-bold mb-4">Automation & Data</h3>
+              <p class="text-neutral-500 text-sm leading-relaxed mb-6">
+                Workflow automation, analytics surfaces, and operational
+                visibility for real-world teams.
+              </p>
+              <div
+                class="w-8 h-[2px] bg-outline-variant group-hover:bg-primary transition-colors"
+              ></div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Project Preview Section -->
+      <section class="py-32 px-6 bg-surface-container-lowest" id="portfolio">
+        <div class="max-w-7xl mx-auto">
+          <div
+            class="flex flex-col md:flex-row justify-between items-end mb-16 gap-8"
+          >
+            <div class="max-w-xl">
+              <span class="mono-label text-primary mb-4 block"
+                >Project Previews</span
+              >
+              <h2 class="text-5xl font-bold tight-heading">Explore Our Work</h2>
+            </div>
+            <a
+              class="text-primary flex items-center gap-2 font-bold mono-label text-xs hover:gap-4 transition-all"
+              href="project-detail.html"
+            >
+              Open Full Projects Page
+              <span class="material-symbols-outlined">north_east</span>
+            </a>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div
+              class="group relative overflow-hidden bg-surface-container rounded-sm"
+            >
+              <div class="p-8 border border-outline-variant/15 h-full">
+                <span class="text-xs font-mono text-primary mb-2 block"
+                  >CREA / DIGITAL PLATFORM</span
+                >
+                <h3 class="text-2xl font-bold mb-3">Unified Member Platform</h3>
+                <p class="text-neutral-400 text-sm leading-relaxed mb-5">
+                  Secure association platform for membership, events, forum,
+                  circulars, and administrative workflows.
+                </p>
+                <a
+                  class="text-primary text-xs underline underline-offset-4"
+                  href="project-detail.html#crea-platform"
+                  >Preview Project</a
+                >
+              </div>
+            </div>
+            <div
+              class="group relative overflow-hidden bg-surface-container rounded-sm"
+            >
+              <div class="p-8 border border-outline-variant/15 h-full">
+                <span class="text-xs font-mono text-primary mb-2 block"
+                  >SSGMCE / WEBSITE MODERNIZATION</span
+                >
+                <h3 class="text-2xl font-bold mb-3">
+                  Institutional Web Upgrade
+                </h3>
+                <p class="text-neutral-400 text-sm leading-relaxed mb-5">
+                  Modernized institutional experience with stronger navigation,
+                  admissions readiness, and trust-building content structure.
+                </p>
+                <a
+                  class="text-primary text-xs underline underline-offset-4"
+                  href="project-detail.html#ssgmce"
+                  >Preview Project</a
+                >
+              </div>
+            </div>
+            <div
+              class="group relative overflow-hidden bg-surface-container rounded-sm"
+            >
+              <div class="p-8 border border-outline-variant/15 h-full">
+                <span class="text-xs font-mono text-primary mb-2 block"
+                  >RAILWAY / LOCO-INFO</span
+                >
+                <h3 class="text-2xl font-bold mb-3">
+                  Loco-Info Production System
+                </h3>
+                <p class="text-neutral-400 text-sm leading-relaxed mb-5">
+                  Real-time locomotive maintenance platform for 400+ railway
+                  staff with role-based workflows and high uptime operations.
+                </p>
+                <a
+                  class="text-primary text-xs underline underline-offset-4"
+                  href="project-detail.html#locoinfo"
+                  >Preview Project</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- How We Work Section -->
+      <section class="py-32 px-6">
+        <div class="max-w-7xl mx-auto">
+          <div class="text-center mb-24">
+            <span class="mono-label text-primary mb-4 block">The Process</span>
+            <h2 class="text-5xl font-bold tight-heading">
+              How Arcway Delivers in 4 Steps
+            </h2>
+          </div>
+          <div class="relative">
+            <!-- Vertical/Horizontal Connector Line -->
+            <div
+              class="absolute top-0 left-8 md:left-1/2 w-px h-full bg-outline-variant/20 -translate-x-1/2 process-line"
+            ></div>
+            <div class="space-y-24">
+              <!-- Step 1 -->
+              <div
+                class="relative flex flex-col md:flex-row items-start md:items-center justify-between gap-12 group"
+              >
+                <div class="md:w-[45%] md:text-right order-2 md:order-1">
+                  <h4 class="text-2xl font-bold mb-3">
+                    Gathering Requirements by Meeting
+                  </h4>
+                  <p class="text-neutral-400">
+                    We begin with focused stakeholder meetings to understand
+                    business goals, pain points, user journeys, and technical
+                    constraints. This stage aligns expectations, defines scope,
+                    and creates a clear requirement sheet before execution.
+                  </p>
+                </div>
+                <div
+                  class="z-10 bg-primary w-16 h-16 rounded-full flex items-center justify-center text-on-primary font-bold order-1 md:order-2 ml-0 md:ml-0"
+                >
+                  01
+                </div>
+                <div class="md:w-[45%] order-3"></div>
+              </div>
+              <!-- Step 2 -->
+              <div
+                class="relative flex flex-col md:flex-row items-start md:items-center justify-between gap-12 group"
+              >
+                <div class="md:w-[45%] order-2"></div>
+                <div
+                  class="z-10 bg-surface-container-high border border-primary/40 w-16 h-16 rounded-full flex items-center justify-center text-primary font-bold order-1 md:order-2"
+                >
+                  02
+                </div>
+                <div class="md:w-[45%] order-3 text-left">
+                  <h4 class="text-2xl font-bold mb-3">
+                    UI Conformation and Information Architecture
+                  </h4>
+                  <p class="text-neutral-400">
+                    After requirements are finalized, we shape the product UI
+                    with wireframes and visual direction, then organize content
+                    and navigation so every screen is clear, purposeful, and
+                    ready for development handoff.
+                  </p>
+                </div>
+              </div>
+              <!-- Step 3 -->
+              <div
+                class="relative flex flex-col md:flex-row items-start md:items-center justify-between gap-12 group"
+              >
+                <div class="md:w-[45%] md:text-right order-2 md:order-1">
+                  <h4 class="text-2xl font-bold mb-3">Building</h4>
+                  <p class="text-neutral-400">
+                    We develop the solution in structured modules with quality
+                    checkpoints, responsive UI implementation, secure
+                    integrations, and continuous internal testing to ensure
+                    stability, performance, and maintainable code.
+                  </p>
+                </div>
+                <div
+                  class="z-10 bg-primary w-16 h-16 rounded-full flex items-center justify-center text-on-primary font-bold order-1 md:order-2"
+                >
+                  03
+                </div>
+                <div class="md:w-[45%] order-3"></div>
+              </div>
+              <!-- Step 4 -->
+              <div
+                class="relative flex flex-col md:flex-row items-start md:items-center justify-between gap-12 group"
+              >
+                <div class="md:w-[45%] order-2"></div>
+                <div
+                  class="z-10 bg-surface-container-high border border-primary/40 w-16 h-16 rounded-full flex items-center justify-center text-primary font-bold order-1 md:order-2"
+                >
+                  04
+                </div>
+                <div class="md:w-[45%] order-3 text-left">
+                  <h4 class="text-2xl font-bold mb-3">Deployment</h4>
+                  <p class="text-neutral-400">
+                    Once validated, we deploy to production with environment
+                    configuration, monitoring setup, and final QA. We complete
+                    handover with documentation and post-launch support to keep
+                    the platform reliable in real-world usage.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Team Section -->
+      <section class="py-32 px-6 bg-surface-container-low">
+        <div class="max-w-7xl mx-auto">
+          <div class="mb-20">
+            <span class="mono-label text-primary mb-4 block">Human Engine</span>
+            <h2 class="text-5xl font-bold tight-heading">Arcway Team</h2>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+            <!-- Member 1 -->
+            <div class="group">
+              <div
+                class="aspect-[3/4] bg-surface-container-highest rounded-sm overflow-hidden mb-4 relative"
+              >
+                <img
+                  class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
+                  alt="Portrait of a professional man in a dark turtleneck looking thoughtfully into the distance, moody studio lighting"
+                  src="images/aditya-kulkarni.jpeg"
+                />
+                <div
+                  class="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity"
+                ></div>
+              </div>
+              <h4 class="font-bold">Aditya Kulkarni</h4>
+              <p class="text-xs mono-label text-neutral-500">
+                Full Stack Developer
+              </p>
+              <div class="mt-3 flex flex-wrap gap-3">
+                <a
+                  aria-label="Aditya Kulkarni GitHub profile"
+                  class="inline-flex h-8 w-8 items-center justify-center rounded-sm border border-outline-variant/30 text-neutral-400 hover:text-primary hover:border-primary/50 transition-colors"
+                  href="https://github.com/mostly-toast"
+                  title="GitHub"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="h-4 w-4"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M12 0C5.37 0 0 5.37 0 12a12 12 0 0 0 8.2 11.4c.6.1.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.4-1.33-1.78-1.33-1.78-1.09-.74.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.08 1.84 2.82 1.31 3.5 1 .11-.78.42-1.31.77-1.61-2.67-.3-5.47-1.33-5.47-5.94 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.53.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.62-2.8 5.64-5.48 5.94.43.37.82 1.1.82 2.22v3.29c0 .32.21.69.83.57A12 12 0 0 0 24 12c0-6.63-5.37-12-12-12z"
+                    ></path></svg
+                ></a>
+                <a
+                  aria-label="Aditya Kulkarni LinkedIn profile"
+                  class="inline-flex h-8 w-8 items-center justify-center rounded-sm border border-outline-variant/30 text-neutral-400 hover:text-primary hover:border-primary/50 transition-colors"
+                  href="https://www.linkedin.com/in/adityakulkarni2004/"
+                  title="LinkedIn"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="h-4 w-4"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M4.98 3.5A2.49 2.49 0 0 1 2.5 6 2.5 2.5 0 0 1 0 3.5 2.5 2.5 0 0 1 2.5 1a2.49 2.49 0 0 1 2.48 2.5zM.5 8h4V23h-4V8zm7 0h3.8v2h.1c.53-1 1.82-2 3.74-2 4 0 4.74 2.63 4.74 6.04V23h-4v-6.6c0-1.57-.03-3.6-2.2-3.6-2.2 0-2.54 1.72-2.54 3.49V23h-4V8z"
+                    ></path></svg
+                ></a>
+              </div>
+            </div>
+            <!-- Member 2 -->
+            <div class="group">
+              <div
+                class="aspect-[3/4] bg-surface-container-highest rounded-sm overflow-hidden mb-4 relative"
+              >
+                <img
+                  class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
+                  alt="Portrait of a professional woman with a minimalist modern style, warm side lighting against a dark wall"
+                  src="images/aditya-siras.jpg"
+                />
+                <div
+                  class="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity"
+                ></div>
+              </div>
+              <h4 class="font-bold">Aditya Siras</h4>
+              <p class="text-xs mono-label text-neutral-500">
+                Full Stack Developer
+              </p>
+              <div class="mt-3 flex flex-wrap gap-3">
+                <a
+                  aria-label="Aditya Siras GitHub profile"
+                  class="inline-flex h-8 w-8 items-center justify-center rounded-sm border border-outline-variant/30 text-neutral-400 hover:text-primary hover:border-primary/50 transition-colors"
+                  href="https://github.com/aditya1492025"
+                  title="GitHub"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="h-4 w-4"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M12 0C5.37 0 0 5.37 0 12a12 12 0 0 0 8.2 11.4c.6.1.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.4-1.33-1.78-1.33-1.78-1.09-.74.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.08 1.84 2.82 1.31 3.5 1 .11-.78.42-1.31.77-1.61-2.67-.3-5.47-1.33-5.47-5.94 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.53.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.62-2.8 5.64-5.48 5.94.43.37.82 1.1.82 2.22v3.29c0 .32.21.69.83.57A12 12 0 0 0 24 12c0-6.63-5.37-12-12-12z"
+                    ></path></svg
+                ></a>
+                <a
+                  aria-label="Aditya Siras LinkedIn profile"
+                  class="inline-flex h-8 w-8 items-center justify-center rounded-sm border border-outline-variant/30 text-neutral-400 hover:text-primary hover:border-primary/50 transition-colors"
+                  href="https://www.linkedin.com/in/aditya-siras/"
+                  title="LinkedIn"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="h-4 w-4"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M4.98 3.5A2.49 2.49 0 0 1 2.5 6 2.5 2.5 0 0 1 0 3.5 2.5 2.5 0 0 1 2.5 1a2.49 2.49 0 0 1 2.48 2.5zM.5 8h4V23h-4V8zm7 0h3.8v2h.1c.53-1 1.82-2 3.74-2 4 0 4.74 2.63 4.74 6.04V23h-4v-6.6c0-1.57-.03-3.6-2.2-3.6-2.2 0-2.54 1.72-2.54 3.49V23h-4V8z"
+                    ></path></svg
+                ></a>
+              </div>
+            </div>
+            <!-- Member 3 -->
+            <div class="group">
+              <div
+                class="aspect-[3/4] bg-surface-container-highest rounded-sm overflow-hidden mb-4 relative"
+              >
+                <img
+                  class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
+                  alt="Portrait of a young tech professional with short hair, clean and sharp lighting in a modern workspace"
+                  src="images/gaurav-ghatol.jpg"
+                />
+                <div
+                  class="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity"
+                ></div>
+              </div>
+              <h4 class="font-bold">Gaurav Ghatol</h4>
+              <p class="text-xs mono-label text-neutral-500">
+                Full Stack Developer
+              </p>
+              <div class="mt-3 flex flex-wrap gap-3">
+                <a
+                  aria-label="Gaurav Ghatol GitHub profile"
+                  class="inline-flex h-8 w-8 items-center justify-center rounded-sm border border-outline-variant/30 text-neutral-400 hover:text-primary hover:border-primary/50 transition-colors"
+                  href="https://github.com/gauravghatol"
+                  title="GitHub"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="h-4 w-4"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M12 0C5.37 0 0 5.37 0 12a12 12 0 0 0 8.2 11.4c.6.1.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.4-1.33-1.78-1.33-1.78-1.09-.74.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.08 1.84 2.82 1.31 3.5 1 .11-.78.42-1.31.77-1.61-2.67-.3-5.47-1.33-5.47-5.94 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.53.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.62-2.8 5.64-5.48 5.94.43.37.82 1.1.82 2.22v3.29c0 .32.21.69.83.57A12 12 0 0 0 24 12c0-6.63-5.37-12-12-12z"
+                    ></path></svg
+                ></a>
+                <a
+                  aria-label="Gaurav Ghatol LinkedIn profile"
+                  class="inline-flex h-8 w-8 items-center justify-center rounded-sm border border-outline-variant/30 text-neutral-400 hover:text-primary hover:border-primary/50 transition-colors"
+                  href="https://www.linkedin.com/in/gauravghatol/"
+                  title="LinkedIn"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="h-4 w-4"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M4.98 3.5A2.49 2.49 0 0 1 2.5 6 2.5 2.5 0 0 1 0 3.5 2.5 2.5 0 0 1 2.5 1a2.49 2.49 0 0 1 2.48 2.5zM.5 8h4V23h-4V8zm7 0h3.8v2h.1c.53-1 1.82-2 3.74-2 4 0 4.74 2.63 4.74 6.04V23h-4v-6.6c0-1.57-.03-3.6-2.2-3.6-2.2 0-2.54 1.72-2.54 3.49V23h-4V8z"
+                    ></path></svg
+                ></a>
+              </div>
+            </div>
+            <!-- Member 4 -->
+            <div class="group">
+              <div
+                class="aspect-[3/4] bg-surface-container-highest rounded-sm overflow-hidden mb-4 relative"
+              >
+                <img
+                  class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
+                  alt="Portrait of an experienced project lead with a confident expression, professional lighting on deep grey background"
+                  src="images/prajwal-kathole.jpeg"
+                />
+                <div
+                  class="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity"
+                ></div>
+              </div>
+              <h4 class="font-bold">Prajwal Kathole</h4>
+              <p class="text-xs mono-label text-neutral-500">
+                Full Stack Developer
+              </p>
+              <div class="mt-3 flex flex-wrap gap-3">
+                <a
+                  aria-label="Prajwal Kathole GitHub profile"
+                  class="inline-flex h-8 w-8 items-center justify-center rounded-sm border border-outline-variant/30 text-neutral-400 hover:text-primary hover:border-primary/50 transition-colors"
+                  href="https://github.com/PrajwalKathole"
+                  title="GitHub"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="h-4 w-4"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M12 0C5.37 0 0 5.37 0 12a12 12 0 0 0 8.2 11.4c.6.1.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.4-1.33-1.78-1.33-1.78-1.09-.74.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.08 1.84 2.82 1.31 3.5 1 .11-.78.42-1.31.77-1.61-2.67-.3-5.47-1.33-5.47-5.94 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.53.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.62-2.8 5.64-5.48 5.94.43.37.82 1.1.82 2.22v3.29c0 .32.21.69.83.57A12 12 0 0 0 24 12c0-6.63-5.37-12-12-12z"
+                    ></path></svg
+                ></a>
+                <a
+                  aria-label="Prajwal Kathole LinkedIn profile"
+                  class="inline-flex h-8 w-8 items-center justify-center rounded-sm border border-outline-variant/30 text-neutral-400 hover:text-primary hover:border-primary/50 transition-colors"
+                  href="https://www.linkedin.com/in/prajwal-kathole-455799251/"
+                  title="LinkedIn"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="h-4 w-4"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M4.98 3.5A2.49 2.49 0 0 1 2.5 6 2.5 2.5 0 0 1 0 3.5 2.5 2.5 0 0 1 2.5 1a2.49 2.49 0 0 1 2.48 2.5zM.5 8h4V23h-4V8zm7 0h3.8v2h.1c.53-1 1.82-2 3.74-2 4 0 4.74 2.63 4.74 6.04V23h-4v-6.6c0-1.57-.03-3.6-2.2-3.6-2.2 0-2.54 1.72-2.54 3.49V23h-4V8z"
+                    ></path></svg
+                ></a>
+              </div>
+            </div>
+            <!-- Member 5 -->
+            <div class="group">
+              <div
+                class="aspect-[3/4] bg-surface-container-highest rounded-sm overflow-hidden mb-4 relative"
+              >
+                <img
+                  class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
+                  alt="Portrait of a creative developer wearing glasses, artistic soft lighting in a dark creative studio"
+                  src="images/sagar-palhade.png"
+                />
+                <div
+                  class="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity"
+                ></div>
+              </div>
+              <h4 class="font-bold">Sagar Palhade</h4>
+              <p class="text-xs mono-label text-neutral-500">
+                Full Stack Developer
+              </p>
+              <div class="mt-3 flex flex-wrap gap-3">
+                <a
+                  aria-label="Sagar Palhade GitHub profile"
+                  class="inline-flex h-8 w-8 items-center justify-center rounded-sm border border-outline-variant/30 text-neutral-400 hover:text-primary hover:border-primary/50 transition-colors"
+                  href="https://github.com/Saggy2442"
+                  title="GitHub"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="h-4 w-4"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M12 0C5.37 0 0 5.37 0 12a12 12 0 0 0 8.2 11.4c.6.1.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.4-1.33-1.78-1.33-1.78-1.09-.74.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.08 1.84 2.82 1.31 3.5 1 .11-.78.42-1.31.77-1.61-2.67-.3-5.47-1.33-5.47-5.94 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.53.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.62-2.8 5.64-5.48 5.94.43.37.82 1.1.82 2.22v3.29c0 .32.21.69.83.57A12 12 0 0 0 24 12c0-6.63-5.37-12-12-12z"
+                    ></path></svg
+                ></a>
+                <a
+                  aria-label="Sagar Palhade LinkedIn profile"
+                  class="inline-flex h-8 w-8 items-center justify-center rounded-sm border border-outline-variant/30 text-neutral-400 hover:text-primary hover:border-primary/50 transition-colors"
+                  href="https://www.linkedin.com/in/sagarpalhade2442/"
+                  title="LinkedIn"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="h-4 w-4"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M4.98 3.5A2.49 2.49 0 0 1 2.5 6 2.5 2.5 0 0 1 0 3.5 2.5 2.5 0 0 1 2.5 1a2.49 2.49 0 0 1 2.48 2.5zM.5 8h4V23h-4V8zm7 0h3.8v2h.1c.53-1 1.82-2 3.74-2 4 0 4.74 2.63 4.74 6.04V23h-4v-6.6c0-1.57-.03-3.6-2.2-3.6-2.2 0-2.54 1.72-2.54 3.49V23h-4V8z"
+                    ></path></svg
+                ></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Contact Section -->
+      <section
+        class="py-32 px-6 border-t border-outline-variant/10"
+        id="contact"
+      >
+        <div class="max-w-7xl mx-auto">
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-24">
+            <div>
+              <span class="mono-label text-primary mb-4 block"
+                >Initialization</span
+              >
+              <h2 class="text-6xl font-extrabold tight-heading mb-8">
+                Build with Arcway <br />today.
+              </h2>
+              <p class="text-xl text-neutral-400 mb-12">
+                Planning a new platform, modernization project, or operations
+                product? Share your brief and we will map the execution path.
+              </p>
+              <div class="space-y-6">
+                <div class="flex items-center gap-4">
+                  <span class="material-symbols-outlined text-primary"
+                    >mail</span
+                  >
+                  <span class="text-lg">connect.arcway@gmail.com</span>
+                </div>
+                <div class="flex items-center gap-4">
+                  <span class="material-symbols-outlined text-primary"
+                    >location_on</span
+                  >
+                  <span class="text-lg">India / Remote Collaboration</span>
+                </div>
+              </div>
+              <div class="mt-16 flex gap-8">
+                <a
+                  class="mono-label text-xs hover:text-primary transition-colors"
+                  href="#"
+                  >LinkedIn</a
+                >
+                <a
+                  class="mono-label text-xs hover:text-primary transition-colors"
+                  href="#"
+                  >X</a
+                >
+                <a
+                  class="mono-label text-xs hover:text-primary transition-colors"
+                  href="#"
+                  >GitHub</a
+                >
+              </div>
+            </div>
+            <div class="bg-surface-container p-10 rounded-sm">
+              <form class="space-y-8" id="contactForm">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  <div class="space-y-2">
+                    <label class="mono-label text-[10px] text-neutral-500"
+                      >Name</label
+                    >
+                    <input
+                      class="contact-control"
+                      name="name"
+                      placeholder="Name"
+                      required
+                      type="text"
+                    />
+                  </div>
+                  <div class="space-y-2">
+                    <label class="mono-label text-[10px] text-neutral-500"
+                      >Email</label
+                    >
+                    <input
+                      class="contact-control"
+                      name="email"
+                      placeholder="Email"
+                      required
+                      type="email"
+                    />
+                  </div>
+                </div>
+                <div class="space-y-2">
+                  <label
+                    class="mono-label text-[10px] text-neutral-500"
+                    for="project-type"
+                    >Project Type</label
+                  >
+                  <select
+                    id="project-type"
+                    class="contact-control appearance-none"
+                    name="projectType"
+                  >
+                    <option>General Enquiry</option>
+                    <option>Website Build</option>
+                    <option>Website Redesign</option>
+                    <option>Mobile App Build</option>
+                    <option>Operations Dashboard</option>
+                  </select>
+                </div>
+                <div class="space-y-2">
+                  <label class="mono-label text-[10px] text-neutral-500"
+                    >Brief</label
+                  >
+                  <textarea
+                    class="contact-control"
+                    name="brief"
+                    placeholder="Tell us your requirement or suggestion..."
+                    required
+                    rows="4"
+                  ></textarea>
+                </div>
+                <button
+                  class="w-full bg-primary-container text-on-primary font-bold py-4 rounded-sm hover:scale-[1.01] transition-transform"
+                  type="submit"
+                >
+                  Send Brief
+                </button>
+                <p class="form-status hidden text-xs text-primary mono-label">
+                  Request captured. We will contact you soon.
+                </p>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Footer -->
+      <footer
+        class="bg-neutral-900 dark:bg-[#121315] full-width py-12 border-t border-neutral-800/20"
+      >
+        <div
+          class="shell flex flex-col md:flex-row md:items-center md:justify-between gap-4"
+        >
+          <div class="text-neutral-100 font-bold text-center md:text-left">
+            Arcway
+          </div>
+          <p
+            class="text-[10px] font-mono uppercase tracking-widest text-neutral-500 text-center"
+          >
+            © 2026 Arcway Portfolio. All rights reserved.
+          </p>
+          <div class="flex items-center justify-center gap-8">
+            <a
+              class="text-neutral-500 hover:text-neutral-200 text-[10px] font-mono uppercase tracking-widest transition-colors"
+              href="#"
+              >LinkedIn</a
+            >
+            <a
+              class="text-neutral-500 hover:text-neutral-200 text-[10px] font-mono uppercase tracking-widest transition-colors"
+              href="#"
+              >GitHub</a
+            >
+            <a
+              aria-label="Back to top"
+              class="back-to-top inline-flex h-8 w-8 items-center justify-center rounded-sm border border-outline-variant/30 text-amber-500 hover:text-primary hover:border-primary/60 transition-colors"
+              href="#top"
+              title="Back to top"
+            >
+              <span class="material-symbols-outlined text-base"
+                >arrow_upward</span
+              >
+            </a>
+          </div>
+        </div>
+      </footer>
+    </main>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

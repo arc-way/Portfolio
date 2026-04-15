@@ -39,3 +39,6 @@ coverage/
 .wrangler/
 .vercel/
 .netlify/
+
+.dev.vars*
+!.dev.vars.example
